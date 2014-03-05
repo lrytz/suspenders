@@ -1,9 +1,8 @@
 \version "2.18.0"
 
-\header{
+\header {
   title = "Ain't Misbehavin'"
 }
-
 
 global = {
   \time 4/4
@@ -20,7 +19,7 @@ structure = {
   \tempo 4 = 136
   s1*4 \bar "||"
   s1^"Piano + Percussion" s1*15
-
+  s1*16 \bar "|."
 }
 
 theChords = \chordmode {
@@ -29,10 +28,12 @@ theChords = \chordmode {
   s1*30
   s1*4
   s1*16
+  \set Score.proportionalNotationDuration = #(ly:make-moment 1 8 )
   c1:m7 as:7 f:7 c:7
   bes c2:m7 f:7 bes1:7 f2:m7 bes:7
   es c:m7 f:m7 bes:7 es g:7.5+ as as:m
   es:/g c:m7 f:7 bes:7 % es1 es4 b:7 bes2:7
+  \unset Score.proportionalNotationDuration
 }
 
 trumpetChords = \transpose bes c \theChords
@@ -58,9 +59,14 @@ trumpet = \transpose bes c \relative c''' {
   r8 bes b c des4-. des8 c~ | c4 ces8 bes~ bes2^\fermata
 }
 breaksTrumpet = {
-  s1 * 40 \break
-  s1 * 8 \break
-  s1 * 8
+  s1*40 \break
+  s1*8  \break
+  s1*13 \break
+  s1*5  \break
+  s1*20 \break % drums, piano + percussion
+  s1*4  \break % solo
+  s1*4  \break % solo
+  s1*4  \break % solo
 }
 
 altoSax = \transpose es c \relative c'' {
@@ -111,6 +117,11 @@ breaksAlto = {
         \trumpet
       >>
     >>
+    % \layout {
+    %   \context {
+    %     \Score proportionalNotationDuration = #(ly:make-moment 1 16)
+    %   }
+    % }
   }
 % }
 % \book {
