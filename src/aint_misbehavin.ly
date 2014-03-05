@@ -68,8 +68,8 @@ trumpet = \transpose bes c \relative c''' {
   R1*4  % drums
   R1*16 % piano + percussion
   \slash
-  as4^"Trumpet" as as as \slTp \slTp \slTp \slTp \slTp R1*2 %solo
-  \slTp \slTp \slTp \slTp \slTp \slTp  % fills
+  as4^"Trumpet" as as as \repeat unfold 5 \slTp R1*2 %solo
+  \repeat unfold 6 \slTp  % fills
   \endSlash
   r8 bes b c des4-. des8 c~ | c4 ces8 bes~ bes2^\fermata
 }
@@ -96,8 +96,8 @@ altoSax = \transpose es c \relative c''   {
   R1*4  % drums
   R1*16 % piano + percussion
   \slash
-  \slAs \slAs \slAs \slAs \slAs \slAs R1*2 %solo
-  \slAs \slAs \slAs \slAs \slAs \slAs  % fills
+  \repeat unfold 6 \slAs R1*2 %solo
+  \repeat unfold 6 \slAs % fills
   \endSlash
   r8 es' e f ges4-. ges8 f~ | f4 ges8 g~ g2^\fermata
 }
