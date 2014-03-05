@@ -15,11 +15,22 @@ structure = {
   \tempo 4 = 98
   s1*4 \bar "||"
   s1*32 \bar "||"
-  s1*30 \bar "||"
+  s1^"Vocals" s1*29 \bar "||"
   \tempo 4 = 136
   s1*4 \bar "||"
   s1^"Piano + Percussion" s1*15
-  s1*16 \bar "|."
+  s1^"Solo" s1*6 s1^"rit. "
+  \tempo 4 = 98
+  s1^"Fills" s1*7 \bar "|."
+}
+
+slash = {
+  \override NoteHead.style = #'slash
+  \hide Stem
+}
+endSlash = {
+  \revert NoteHead.style
+  \undo \hide Stem
 }
 
 theChords = \chordmode {
@@ -30,8 +41,8 @@ theChords = \chordmode {
   s1*16
   \set Score.proportionalNotationDuration = #(ly:make-moment 1 8 )
   c1:m7 as:7 f:7 c:7
-  bes c2:m7 f:7 bes1:7 f2:m7 bes:7
-  es c:m7 f:m7 bes:7 es g:7.5+ as as:m
+  bes c2:m7 f:7 s1 s % bes1:7 f2:m7 bes:7
+  es2 c:m7 f:m7 bes:7 es g:7.5+ as as:m
   es:/g c:m7 f:7 bes:7 % es1 es4 b:7 bes2:7
   \unset Score.proportionalNotationDuration
 }
@@ -39,12 +50,14 @@ theChords = \chordmode {
 trumpetChords = \transpose bes c \theChords
 altoChords = \transpose es c \theChords
 
+slTp = \relative c''' { as4 as as as }
+slAs = \relative c'' { d4 d d d }
 
 trumpet = \transpose bes c \relative c''' {
   \global
   \set Staff.instrumentName = #"Trumpet"
   R1*4
-  R1*31 r2 r4 fis, \glissando
+  R1*31 r2 r4 fis,^"Flugel" \glissando
   g2 r8 g \tuplet 3/2 { bes a as~ } | as2 r8 as f fis | g2 des' | c ces |
   bes r4 g8 ges | f2 as | g bes4. r8 | a2 as4 fis4 \glissando |
   g2 r4 g | as2 r4 \tuplet 3/2 { as8 f fis } | g2 des' | c ces |
@@ -54,10 +67,13 @@ trumpet = \transpose bes c \relative c''' {
   bes2 r8 g \tuplet 3/2 { c g ges } | f2 as |
   R1*4  % drums
   R1*16 % piano + percussion
-  R1*8  % solo
-  R1*6  % fills
+  \slash
+  as4^"Trumpet" as as as \slTp \slTp \slTp \slTp \slTp R1*2 %solo
+  \slTp \slTp \slTp \slTp \slTp \slTp  % fills
+  \endSlash
   r8 bes b c des4-. des8 c~ | c4 ces8 bes~ bes2^\fermata
 }
+
 breaksTrumpet = {
   s1*40 \break
   s1*8  \break
@@ -69,7 +85,7 @@ breaksTrumpet = {
   s1*4  \break % solo
 }
 
-altoSax = \transpose es c \relative c'' {
+altoSax = \transpose es c \relative c''   {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   R1*4 R1*32
@@ -79,35 +95,41 @@ altoSax = \transpose es c \relative c'' {
   R1*6
   R1*4  % drums
   R1*16 % piano + percussion
-  R1*8  % solo
-  R1*6  % fills
+  \slash
+  \slAs \slAs \slAs \slAs \slAs \slAs R1*2 %solo
+  \slAs \slAs \slAs \slAs \slAs \slAs  % fills
+  \endSlash
   r8 es' e f ges4-. ges8 f~ | f4 ges8 g~ g2^\fermata
 }
 
 breaksAlto = {
-  % s1 * 40 \break
-  % s1 * 8 \break
-  % s1 * 8
+  s1*52 \break
+  s1*4  \break
+  s1*4  \break
+  s1*26 \break % drums, piano + percussion
+  s1*4  \break % solo
+  s1*4  \break % solo
+  s1*4  \break % solo
 }
 
-\book {
-  \score {
-    <<
-      \new ChordNames \trumpetChords
-      \new Staff = "trumpet" <<
-        \structure
-        \trumpet
-      >>
-      % \new Staff \trumpet
-      \new ChordNames \altoChords
-      \new Staff = "altoSax" <<
-        \altoSax
-      >>
-    >>
-  }
-% }
 % \book {
-%   \bookOutputSuffix "tp"
+%   \score {
+%     <<
+%       \new ChordNames \trumpetChords
+%       \new Staff = "trumpet" <<
+%         \structure
+%         \trumpet
+%       >>
+%       % \new Staff \trumpet
+%       \new ChordNames \altoChords
+%       \new Staff = "altoSax" <<
+%         \altoSax
+%       >>
+%     >>
+%   }
+% }
+\book {
+  \bookOutputSuffix "tp"
   \score {
     <<
       \new ChordNames \trumpetChords
@@ -117,15 +139,10 @@ breaksAlto = {
         \trumpet
       >>
     >>
-    % \layout {
-    %   \context {
-    %     \Score proportionalNotationDuration = #(ly:make-moment 1 16)
-    %   }
-    % }
   }
-% }
-% \book {
-%   \bookOutputSuffix "as"
+}
+\book {
+  \bookOutputSuffix "as"
   \score {
     <<
       \new ChordNames \altoChords
