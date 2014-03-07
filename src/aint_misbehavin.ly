@@ -2,6 +2,11 @@
 
 \header {
   title = "Ain't Misbehavin'"
+  tagline = ""
+}
+
+\paper {
+  markup-system-spacing #'padding = #5 %space after title
 }
 
 global = {
@@ -18,7 +23,7 @@ structure = {
   s1^"Vocals" s1*29 \bar "||"
   \tempo 4 = 136
   s1*4 \bar "||"
-  s1^"Piano + Percussion" s1*15
+  s1*0^"Piano + Percussion" s1*16
   s1^"Solo" s1*6 s1^"rit. "
   \tempo 4 = 98
   s1^"Fills" s1*7 \bar "|."
