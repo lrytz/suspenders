@@ -1,4 +1,5 @@
-\version "2.18.0"
+#(ly:set-option 'relative-includes #t)
+\include "lib.ly"
 
 \header {
   title = "All Of Me"
@@ -11,43 +12,6 @@ global = {
   \clef "violin"
   \set Score.skipBars = ##t % combine multi-rests
 }
-
-% function that returns music
-lyricsAbove = #(define-music-function
-  (parser location lyrics)
-  (ly:music?)
-  #{
-    \new Lyrics \with { \override VerticalAxisGroup.staff-affinity = #DOWN } $lyrics
-  #})
-
-% function that does not return music
-markupBox = #(define-scheme-function
-  (parser location text)
-  (markup?)
-  #{
-    \markup { \box { #text } }
-  #})
-
-% right-aligned mark
-rightMark = #(define-music-function
-  (parser location text)
-  (markup?)
-  #{
-    \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
-    \mark #text
-  #})
-
-% right-aligned mark in an end-of-line bar
-rightBreakMark = #(define-music-function
-  (parser location text)
-  (markup?)
-  #{
-    \once \override Score.RehearsalMark.break-visibility = #end-of-line-visible
-    \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
-    \mark #text
-  #})
-
-
 
 structureTp = {
   \tempo 4 = 176
@@ -130,7 +94,7 @@ trumpet = \transpose bes c \relative c''' {
 remarksTrumpet = \lyricmode {
   \skip 2..
   \skip 1*64
-  \markupBox "1. Fills (Solo Voc), 2. Tacet (Solo Sax), 3. Thema (frei)" \skip 2
+  \markupBox "1. Fills (Solo Voc), 2. Tacet (Solo Sax), 3. Thema (frei)" 1 % duration
   \skip 1*15
   \markupBox "2. Solo"
 }
@@ -172,7 +136,7 @@ remarksAlto = \lyricmode {
   \markup \box { \column {
     \line { 1. Fills (Thema tp), 2. Fills (Thema voc),}
     \line { 3. Tacet, 4. Solo, 5. Fills (Thema tp) }
-  } } \skip 2
+  } } 1
   \skip 1*15
   \markupBox "4. Tacet"
 }
@@ -209,9 +173,8 @@ breaksAlto = {
 \book {
   \bookOutputSuffix "as"
   \paper {
-    markup-system-spacing #'padding = #3
+    markup-system-spacing #'padding = #6
   }
-  \markup { \vspace #1 } % space after title
   \score {
     <<
       \lyricsAbove \remarksAlto

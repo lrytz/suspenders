@@ -1,4 +1,5 @@
-\version "2.18.0"
+#(ly:set-option 'relative-includes #t)
+\include "lib.ly"
 
 \header {
   title = "Ain't Misbehavin'"
@@ -6,7 +7,7 @@
 }
 
 \paper {
-  markup-system-spacing #'padding = #5 %space after title
+  markup-system-spacing #'padding = #6 %space after title
 }
 
 global = {
@@ -20,13 +21,24 @@ structure = {
   \tempo 4 = 98
   s1*4 \bar "||"
   s1*32 \bar "||"
-  s1^"Vocals" s1*29 \bar "||"
+  s1*0^"Vocals" s1*30 \bar "||"
   \tempo 4 = 136
   s1*4 \bar "||"
   s1*0^"Piano + Percussion" s1*16
-  s1^"Solo" s1*6 s1^"rit. "
+  s1*6 s1^"rit. "
   \tempo 4 = 98
-  s1^"Fills" s1*7 \bar "|."
+  s1*8 \bar "|."
+}
+
+remarks = \lyricmode {
+  \skip 1*4
+  \skip 1*32
+  \skip 1*30
+  \skip 1*4
+  \skip 1*16
+  \markupBox "Solo (tutti)" 1 % duration 1
+  \skip 1*7
+  \markupBox "Fills (tutti)"
 }
 
 slash = {
@@ -137,6 +149,7 @@ breaksAlto = {
   \bookOutputSuffix "tp"
   \score {
     <<
+      \lyricsAbove \remarks
       \new ChordNames \trumpetChords
       \new Staff = "trumpet" <<
         \structure
@@ -150,6 +163,7 @@ breaksAlto = {
   \bookOutputSuffix "as"
   \score {
     <<
+      \lyricsAbove \remarks
       \new ChordNames \altoChords
       \new Staff = "altoSax" <<
         \structure
