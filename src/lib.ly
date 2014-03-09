@@ -1,5 +1,15 @@
 \version "2.18.0"
 
+slash = {
+  \override NoteHead.style = #'slash
+  \hide Stem
+}
+
+endSlash = {
+  \revert NoteHead.style
+  \undo \hide Stem
+}
+
 % function that returns music
 lyricsAbove = #(define-music-function
   (parser location lyrics)

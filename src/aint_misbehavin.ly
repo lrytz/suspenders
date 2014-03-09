@@ -41,15 +41,6 @@ remarks = \lyricmode {
   \markupBox "Fills (tutti)"
 }
 
-slash = {
-  \override NoteHead.style = #'slash
-  \hide Stem
-}
-endSlash = {
-  \revert NoteHead.style
-  \undo \hide Stem
-}
-
 theChords = \chordmode {
   s1*4
   s1*32
@@ -132,6 +123,7 @@ breaksAlto = {
 % \book {
 %   \score {
 %     <<
+%       \lyricsAbove \remarks
 %       \new ChordNames \trumpetChords
 %       \new Staff = "trumpet" <<
 %         \structure

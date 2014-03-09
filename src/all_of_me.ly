@@ -32,15 +32,6 @@ structureAs = {
   s1*4  \bar "|."
 }
 
-slash = {
-  \override NoteHead.style = #'slash
-  \hide Stem
-}
-endSlash = {
-  \revert NoteHead.style
-  \undo \hide Stem
-}
-
 theChords = \chordmode {
   \set Score.proportionalNotationDuration = #(ly:make-moment 1 8 )
   des1 s f:7 s
