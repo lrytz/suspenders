@@ -44,3 +44,10 @@ rightBreakMark = #(define-music-function
     \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
     \mark #text
   #})
+
+pSegno = \mark \markup { \musicglyph #"scripts.segno" }
+
+pCoda = {
+  \once \override Score.RehearsalMark.font-size = #4
+  \mark \markup { \musicglyph #"scripts.coda" }
+}
