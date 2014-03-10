@@ -68,13 +68,13 @@ theChords = {
   \unset Score.proportionalNotationDuration
 }
 
-trumpetChords = \transpose c c  \theChords % TODO transpose
-altoChords = \transpose c c \theChords % TODO transpose
+trumpetChords = \transpose c c \theChords
+altoChords = \transpose f c \theChords
 
-slTp = \relative c'' { a4 a a a }
-slAs = \relative c'' { d4 d d d }
+slTp = \relative c'' { b4 b b b }
+slAs = \relative c'' { e4 e e e }
 
-trumpet = \transpose c c \relative c'' { % TODO transpose
+trumpet = \transpose c c \relative c'' {
   \global
   \set Staff.instrumentName = #"Trumpet"
   \partial 4.
@@ -98,7 +98,7 @@ trumpet = \transpose c c \relative c'' { % TODO transpose
     \oneVoice
     \slash
     \repeat unfold 7 \slTp
-    a4 a a \endSlash a_"On D.S."
+    b4 b b \endSlash a_"On D.S."
   }
   % coda
   gis2 e | c' b | r8 e dis e f fis g gis | a4 r fis,2 \fermata |
@@ -119,7 +119,7 @@ breaksTp = {
   s1*4  \break
 }
 
-altoSax = \transpose c c \relative c'' { % TODO transpose
+altoSax = \transpose f c \relative c'' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   \partial 4.
@@ -136,10 +136,10 @@ altoSax = \transpose c c \relative c'' { % TODO transpose
   \repeat volta 4 {
     \slash
     \repeat unfold 31 \slAs
-    d4 d d \endSlash c_"On D.S."
+    e4 e e \endSlash c_"On D.S."
   }
   % coda
-  gis2 e | c' b | r8 e dis e dis d cis b | c4 r cis2 \fermata |
+  gis'2 e | d c | r8 e' dis e dis d cis b | c4 r cis,2 \fermata |
 }
 
 breaksAs = {
