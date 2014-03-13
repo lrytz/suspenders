@@ -10,6 +10,15 @@ endSlash = {
   \undo \hide Stem
 }
 
+cross = {
+  \override NoteHead.style = #'cross
+}
+
+endCross = {
+  \revert NoteHead.style
+}
+
+
 % function that returns music
 lyricsAbove = #(define-music-function
   (parser location lyrics)
@@ -32,6 +41,14 @@ rightMark = #(define-music-function
   (markup?)
   #{
     \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+    \mark #text
+  #})
+
+centerMark = #(define-music-function
+  (parser location text)
+  (markup?)
+  #{
+    \once \override Score.RehearsalMark.self-alignment-X = #CENTER
     \mark #text
   #})
 
