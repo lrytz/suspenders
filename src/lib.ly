@@ -10,6 +10,14 @@ endSlash = {
   \undo \hide Stem
 }
 
+slashStem = {
+  \override NoteHead.style = #'slash
+}
+
+endSlashStem = {
+  \revert NoteHead.style
+}
+
 cross = {
   \override NoteHead.style = #'cross
 }
@@ -70,3 +78,14 @@ pCoda = {
 }
 
 fall = \bendAfter #-2
+
+% don't know how to put \bendAfter into a music-function.
+% current usage: \be c \nd
+nd = \bendAfter #2
+be = #(define-music-function
+  (parser location note)
+  (ly:music?)
+  #{
+  \once \override BendAfter #'extra-offset = #'(-2.9 . -1.2)
+    #note
+  #})
