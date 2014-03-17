@@ -162,6 +162,9 @@ breaksAs = {
 \book {
   \bookOutputSuffix "tp"
   \paper {
+    system-system-spacing #'basic-distance = #16
+  }
+  \paper {
     % fit on one page
     % system-system-spacing = #'(
     %   (basic-distance . 10)
@@ -183,6 +186,9 @@ breaksAs = {
 }
 \book {
   \bookOutputSuffix "as"
+  \paper {
+    system-system-spacing #'basic-distance = #16
+  }
   \score {
     <<
       \lyricsAbove \remarks

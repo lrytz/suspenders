@@ -85,7 +85,7 @@ trumpet = \transpose bes c \relative c''' {
     as'4. r8 g4. f8 | r8 d r4 r2 | as'4. r8 g4. f8 | r8 d r4 r2 |
     as'4. r8 g4. f8 | r8 d r4 r2 | r1 | r1
     r1 R1*7
-    as'4. r8 g4. f8 | r8 d r4 r2 | as'4. r8 g4. f8 | r1
+    as'4.^"2nd time only" r8 g4. f8 | r8 d r4 r2 | as'4. r8 g4. f8 | r1
     R1*4
     r1 R1*2 \cross f4^"3. Fine" f8 f8 \endCross r2
   }
@@ -115,7 +115,7 @@ altoSax = \transpose es c \relative c''' {
     d4. r8 des4. c8 | r8 a r4 r2 | d4. r8 des4. c8 | r8 a r4 r2 |
     d4. r8 des4. c8 | r8 a r4 r2 | r1^"2nd time fills" | r1
     r1 R1*7
-    d4. r8 des4. c8 | r8 a r4 r2 | d4. r8 des4. c8 | r1
+    d4.^"2nd time only" r8 des4. c8 | r8 a r4 r2 | d4. r8 des4. c8 | r1
     R1*4
     r1^"2nd time fills" R1*2 \cross bes,4^"3. Fine" bes8 bes8 \endCross r2
   }

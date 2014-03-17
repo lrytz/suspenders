@@ -76,7 +76,11 @@ trumpet = \transpose bes c \relative c''' {
     \endSlash
     r8^"last time (end of solo)" c b c d4 b | a8 g4. r4 a8 b |
   }
-  c c \tuplet 3/2 {b a c~} c4\fermata^"fill" g8 a | b b \tuplet 3/2 {a g b~} b4\fermata^"fill" r4 | r2^"cadenza" d4\fermata r4^"cad." | g2\fermata r2 |
+  c c \tuplet 3/2 {b a c~} c4\fermata
+     \cadenzaOn \slash a4^"cadenza" \endSlash \cadenzaOff
+   g8 a | b b \tuplet 3/2 {a g b~} b4\fermata
+     \cadenzaOn \slash a4^"cad." \endSlash \cadenzaOff
+   r4 | \slash a4^"cad." a4 \endSlash d4\fermata \slash a4^"cad." \endSlash | g2\fermata r2 |
 }
 
 

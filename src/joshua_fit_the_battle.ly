@@ -46,14 +46,14 @@ remarks = \lyricmode {
   \skip 8
   \markup \box \fontsize #2 \column {
     \line {"1. Thema Sax, 2. Thema tutti"}
-    \line {"3. Solo tutti, 4. Solo tutti (on cue Coda)"}
+    \line {"3. Solo tutti, 4. Solo tutti over A (on cue Coda)"}
   } 2..
   \skip 1*7
   \skip 1*8
   \skip 8
-  \markup \box \fontsize #2 "1. Sax, 2. Trumpet, 3. Tutti, 4.. direct to A" 2..
+  \markup \box \fontsize #2 "1. Sax, 2. Trumpet, 3. Tutti, 4... repeat A (don't play B)" 2..
   \skip 1*7
-  \rightBreakMark \markup \box \fontsize #3 "2./3. to A"
+  \rightBreakMark \markup { \box {\fontsize #3 "1 continue, 2./3. to A"}↓}
 }
 
 chorusA = \chordmode {
@@ -89,12 +89,12 @@ slbTp = \repeat unfold 4 \slTp
 slbAs = \repeat unfold 4 \slAs
 
 melodyA = \relative c''' {
-  f,8 f g4 as bes | c8 as4 c8~ c4 r | bes8 g4 bes8~ bes4 r | c8 as4 c8~ c4 r |
+  f,8_"1st and 2nd time only" f g4 as bes | c8 as4 c8~ c4 r | bes8 g4 bes8~ bes4 r | c8 as4 c8~ c4 r |
   f,8 f g4 as bes | c8 as4 c8~ c4 des8 des | c4 bes as8 g4 f8~ | f2
 }
 
 secondA = \relative c''' {
-  d,8 d e e f f g g | as f4 as8~ as4 r | g8 e4 g8~ g4 r | as8 f4 as8~ as4 r |
+  d,8_"2nd time only" d e e f f g g | as f4 as8~ as4 r | g8 e4 g8~ g4 r | as8 f4 as8~ as4 r |
   d,8 d e e f f g g | as f4 as8~ as4 bes8 bes | as as g g f4 e8 d~ | d2
 }
 

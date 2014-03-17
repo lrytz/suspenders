@@ -25,7 +25,7 @@ structure = {
   s1*8 % B
   \bar "||"
   s1*7 \pCoda % A
-  s1 \rightBreakMark "D.S."
+  s1 \rightBreakMark \markupBox "D.S."
   s1*0^\markup { \right-align \fontsize #4 \musicglyph #"scripts.coda" }
   s1*1
   \bar "||"
@@ -46,7 +46,7 @@ chorusChords = \chordmode {
   es2:m7 as:7 es:m7 as:7 des as:5+7 des1:6
   bes:7 es2:maj7 c:7 f:m7 bes:7 bes:m7 es:7
   as1:6 s bes:7 s
-  des2 d:dim as:/es f:7 bes:m es:7 as4 es8:sus7 es:7 s2 as as:7
+  des2 d:dim as:/es f:7 bes:m es:7 as4 es8:7sus4 es:7 s2 as as:7
 }
 
 soloChords = \chordmode {
@@ -74,7 +74,7 @@ slAs = \relative c'' { des4 des des des }
 trumpet = \transpose bes c \relative c''' {
   \global
   \set Staff.instrumentName = #"Trumpet"
-  b8^"Cup Mute" as4 b8 r2 | b8 as4 b8 r2 | b8 c b c b c as\prall f | as4 as8 as r2 |
+  b8^"Cup Mute" as4 b8 r2 | b8 as4 b8 r2 | b8 c b c b c as\prall f | as4-- as8 as r2 |
   \repeat volta 2 {
     r8 as r4 r8 as r4 | r8 as r4 r8 as \tuplet 3/2 {f es as~} | as4. bes8~ bes as bes4 | r8 f'~ f4 b,8 c8 f, as |
     r8 as r4 r8 as r4 | r8 as r4 r8 es' r8 des~| des4. des8 r2 
@@ -101,7 +101,7 @@ trumpet = \transpose bes c \relative c''' {
 breaksTp = {
   s1*4 \break
   s1*9 \break
-  s1*8 \break
+  s1*8
   s1*8 \break
   s1*5 \break
   s1*4 \break
@@ -111,7 +111,7 @@ breaksTp = {
 altoSax = \transpose es c \relative c'' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
-  d8 b4 d8 r2 | es8 c4 es8 r2 | d8 es d es d es b\prall as | des4 des8 c r2
+  d8 b4 d8 r2 | es8 c4 es8 r2 | d8 es d es d es b\prall as | des4-- des8 c r2
   \repeat volta 2 {
     r8 c r4 r8 c r4 | r8 c r4 r8 c \tuplet 3/2 {as f d'~} | d4. es8~ es c es4 | r8 d8~ d4 d d |
     r8 des r4 r8 d r4 | r8 es r4 r8 a r8 as~ | as4. g8 r2
@@ -130,14 +130,14 @@ altoSax = \transpose es c \relative c'' {
   % intro
   d,8 b4 d8 r2 | es8 c4 es8 r2 | d8 es d es d es b\prall as | des4 des8 c r2
   \slash
-  \repeat unfold 9 \slAs  \undo \hide Stem des8 des r2
+  \repeat unfold 9 \slAs  \undo \hide Stem des4 des8 des r2
   \endSlash
 }
 
 breaksAs = {
   s1*4 \break
   s1*9 \break
-  s1*8 \break
+  s1*8
   s1*8 \break
   s1*5 \break
   s1*4 \break
@@ -164,12 +164,7 @@ breaksAs = {
 \book {
   \bookOutputSuffix "tp"
   \paper {
-    % fit on one page
-    % system-system-spacing = #'(
-    %   (basic-distance . 10)
-    %   (minimum-distance . 0)
-    %   (padding . 0)
-    %   (stretchability . 0))
+    system-system-spacing #'basic-distance = #16
   }
   \score {
     <<
@@ -185,6 +180,9 @@ breaksAs = {
 }
 \book {
   \bookOutputSuffix "as"
+  \paper {
+    system-system-spacing #'basic-distance = #16
+  }
   \score {
     <<
       \lyricsAbove \remarks

@@ -110,11 +110,11 @@ breaks = {
   s1*4 \break
 }
 
-altoSax = \transpose g c \relative c'' {
+altoSax = \transpose g c \relative c''' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   \partial 4. r4.
-  \transpose c c {
+  \transpose c, c {
     \introLick r2 | \introLick r2 |
     \introLick
   } r8 g as-. a r1 | r2 r8 f \tuplet 3/2 {bes f as} |
@@ -128,13 +128,13 @@ altoSax = \transpose g c \relative c'' {
       { r2 r8 f \tuplet 3/2 {bes f as} }
       { r1 }
     }
-    r1 | r4 r8 a'\fall r2 | r1 | r4 c8 c~ c4 r4 |
-    r1 | a4^- g8 fis~ fis2 | r1 | r2 r8 f, \tuplet 3/2 {bes f as}
+    r1 | r4 r8 a\fall r2 | r1 | r4 c8 c~ c4 r4 |
+    r1 | a4^- g8 fis~ fis2 | r1 | r2 r8 f \tuplet 3/2 {bes f as}
 
     f4 r4 r2 | r2 r8 f \tuplet 3/2 {bes f as} | f4 r4 r2 | r2 r8 f \tuplet 3/2 {bes f as} |
     f4 r4 r2 | r2 r8 f \tuplet 3/2 {bes f as} | r1 | r2 r2^"Pickup Solo"
   }
-  r1^"rit." | b'4-.^"on cue" bes-. a2\fermata
+  r1^"rit." | b4-.^"on cue" bes-. a2\fermata
 }
 
 % \book {
