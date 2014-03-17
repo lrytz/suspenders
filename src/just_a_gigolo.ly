@@ -19,7 +19,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 138
+  \tempo 4 = 108
   \partial 8 s8
   s1*16
   s1*16

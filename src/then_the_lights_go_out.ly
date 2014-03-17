@@ -19,7 +19,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 96
+  \tempo 4 = 102
   \partial 4. s4.
   s1*0^"shuffle"
   s1*8 % intro

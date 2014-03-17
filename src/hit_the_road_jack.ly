@@ -20,7 +20,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 174
+  \tempo 4 = 172
   s1*4  % intro
   \pSegno
   s1*16 % 2x thema, 3rd time to coda

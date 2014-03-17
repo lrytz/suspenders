@@ -19,7 +19,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 162
+  \tempo 4 = 166
   s1*4 % intro
   s1*8 % A
   \bar "||"

@@ -19,6 +19,7 @@ global = {
 }
 
 structure = {
+  \tempo 4 = 132
   s1*0^\markupBox "Intro Piano"
   s1*4
   s1*8  % A

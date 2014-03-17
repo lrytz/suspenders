@@ -18,7 +18,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 107
+  \tempo 4 = 106
   s1*4 % intro
   \pSegno
   s1*9 % A

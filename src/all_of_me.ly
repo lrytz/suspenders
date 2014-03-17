@@ -47,10 +47,11 @@ theChords = \chordmode {
 
 trumpetChords = \transpose bes c {
   s2..
-  s1*32
+  \theChords
   s1*32
   \theChords
 }
+
 altoChords = \transpose es c {
   s2..
   \theChords
@@ -74,6 +75,7 @@ trumpet = \transpose bes c \relative c''' {
   es'2 des4 c8 es~ | es2 r4. des8 | r c4. f,8 as4 c8~ | c2 r4 bes |
   des2 bes4 des | f2 f2 | des1 | r1 |
   R1*32
+  \pageBreak
   \slash
   \repeat volta 3 {
     \repeat unfold 13 \slTp as4 as \endSlash \tuplet 3/2 {r4 r des-.^"3rd time only"}  \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {f-. f-. f-.} as2 \slash
@@ -147,7 +149,12 @@ breaksAlto = {
 \book {
   \bookOutputSuffix "tp"
   \paper {
-    system-system-spacing #'basic-distance = #11 % fit on page
+      % removes stretchability, otherwise too much space on first page
+      system-system-spacing = #'(
+      (basic-distance . 16)
+      (minimum-distance . 0)
+      (padding . 0)
+      (stretchability . 0))
   }
   \score {
     <<
@@ -164,7 +171,8 @@ breaksAlto = {
 \book {
   \bookOutputSuffix "as"
   \paper {
-    markup-system-spacing #'padding = #6
+    markup-system-spacing #'padding = #8
+    system-system-spacing #'basic-distance = #15 % increase space
   }
   \score {
     <<

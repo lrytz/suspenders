@@ -18,7 +18,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 150
+  \tempo 4 = 154
   \partial 4.
   s4.
   % markup here because it should not break the multi-rests,

@@ -18,7 +18,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 98
+  \tempo 4 = 96
   s1*4 \bar "||"
   s1*32 \bar "||"
   s1*0^"Vocals" s1*30 \bar "||"
@@ -26,7 +26,7 @@ structure = {
   s1*4 \bar "||"
   s1*0^"Piano + Percussion" s1*16
   s1*6 s1^"rit. "
-  \tempo 4 = 98
+  \tempo 4 = 96
   s1*8 \bar "|."
 }
 

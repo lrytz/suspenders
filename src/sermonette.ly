@@ -19,6 +19,7 @@ global = {
 }
 
 structure = {
+  \tempo 4 = 120
   \partial 2.
   s2.
   \bar "||"

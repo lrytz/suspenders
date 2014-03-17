@@ -20,7 +20,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 174
+  \tempo 4 = 150
   \partial 4. s4.
   s1*8 \bar "||"
   \pSegno
