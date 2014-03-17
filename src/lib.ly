@@ -60,6 +60,14 @@ centerMark = #(define-music-function
     \mark #text
   #})
 
+leftMark = #(define-music-function
+  (parser location text)
+  (markup?)
+  #{
+    \once \override Score.RehearsalMark.self-alignment-X = #LEFT
+    \mark #text
+  #})
+
 % right-aligned mark in an end-of-line bar
 rightBreakMark = #(define-music-function
   (parser location text)
