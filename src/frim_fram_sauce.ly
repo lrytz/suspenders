@@ -50,7 +50,7 @@ chorusChords = \chordmode {
 }
 
 soloChords = \chordmode {
-  des2 as:/c bes:m des:/as g1:m7-5 es:7
+  des2 as:/c bes:m des:/as g1:m7.5- es:7
   ges2 g:dim des:/as bes:7 es1:7 as:7
   des2 as:5+7 des1
 }

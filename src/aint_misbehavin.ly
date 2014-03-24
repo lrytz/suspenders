@@ -21,7 +21,7 @@ structure = {
   \tempo 4 = 96
   s1*4 \bar "||"
   s1*32 \bar "||"
-  s1*0^"Vocals" s1*30 \bar "||"
+  s1*0^"Vocals" s1*8 \bar "||" s1*8 \bar "||" s1*8 \bar "||" s1*6 \bar "||"
   \tempo 4 = 136
   s1*4 \bar "||"
   s1*0^"Piano + Percussion" s1*16
@@ -161,6 +161,23 @@ breaksAlto = {
         \structure
         \breaksAlto
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes, es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAlto
+        \tenorSax
       >>
     >>
   }
