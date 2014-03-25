@@ -169,3 +169,23 @@ altoSax = \transpose as c \relative c'' {
     >>
   }
 }
+
+tenorSax = \transpose bes, es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #15
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaks
+        \tenorSax
+      >>
+    >>
+  }
+}
