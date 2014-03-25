@@ -127,8 +127,10 @@ altoSax = \transpose ces c \relative c'' {
   }
 
   R1*6 % TODO: background
-  \tuplet 3/2 {r4 as' f} \tuplet 3/2 {es c as} | \tuplet 3/2 {f es ces} \tuplet 3/2 {bes as f} | r2 r4 r8 ces''8~ | ces2 \fermata r2
-
+  \ottava #1
+  \set Staff.ottavation = #"8va"
+  \tuplet 3/2 {r4 as'' f} \tuplet 3/2 {es c as} | \tuplet 3/2 {f es ces} \tuplet 3/2 {bes as f} | r2 r4 r8 ces''8~ | ces2 \fermata r2
+  \ottava #0
 }
 
 breaksAs = {
@@ -197,6 +199,26 @@ breaksAs = {
         \structure
         \breaksAs
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes, es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #16
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAs
+        \tenorSax
       >>
     >>
   }

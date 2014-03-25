@@ -74,24 +74,24 @@ slAs = \relative c'' { des4 des des des }
 trumpet = \transpose bes c \relative c''' {
   \global
   \set Staff.instrumentName = #"Trumpet"
-  b8^"Cup Mute" as4 b8 r2 | b8 as4 b8 r2 | b8 c b c b c as\prall f | as4-- as8 as r2 |
+  ces8^"Cup Mute" as4 ces8 r2 | ces8 as4 ces8 r2 | ces8 c ces c ces c as\prall f | as4-- as8 as r2 |
   \repeat volta 2 {
-    r8 as r4 r8 as r4 | r8 as r4 r8 as \tuplet 3/2 {f es as~} | as4. bes8~ bes as bes4 | r8 f'~ f4 b,8 c8 f, as |
+    r8 as r4 r8 as r4 | r8 as r4 r8 as \tuplet 3/2 {f es as~} | as4. bes8~ bes as bes4 | r8 f'~ f4 ces8 c8 f, as |
     r8 as r4 r8 as r4 | r8 as r4 r8 es' r8 des~| des4. des8 r2 
   }
   \alternative {
     { r8 as as as as4 g }
-    { r8 b c4-- \tuplet 3/2 {e,8 f as} \tuplet 3/2 {c r as}}
+    { r8 ces c4-- \tuplet 3/2 {e,8 f as} \tuplet 3/2 {c r as}}
   }
   % B
   r4 r8 c,~ c4 r8 des~ | des4 des8 c r2 | r1
   \tuplet 3/2 {e8 f as} \tuplet 3/2 {c r bes} as8 f es des | bes'4 r r2 | r4 \tuplet 3/2 {es,8 g bes} d8 c  g as~ | as4 r r g8 es | r1
   % A3
-  r8 as r4 r8 as r4 | r8 as r4 r8 as \tuplet 3/2 {f es as~} | as4. bes8~ bes as bes4 | r8 f'~ f4 b,8 c8 f, as |
+  r8 as r4 r8 as r4 | r8 as r4 r8 as \tuplet 3/2 {f es as~} | as4. bes8~ bes as bes4 | r8 f'~ f4 bes,8 c8 f, as |
   r8 as r4 r8 as r4 | r8 as r4 r8 es' r8 des~| des4. des8 r4 des8 c |r4 c8 es r2 |
   r8 c~ c4 es8 as r4
   % intro
-  b,8 as4 b8 r2 | b8 as4 b8 r2 | b8 c b c b c as\prall f | as4 as8 as r2 |
+  ces,8 as4 ces8 r2 | ces8 as4 ces8 r2 | ces8 c ces c ces c as\prall f | as4 as8 as r2 |
   \slash
   as4^"Open" as as as
   \repeat unfold 8 \slTp \undo \hide Stem as4 as8 as r2
@@ -111,7 +111,7 @@ breaksTp = {
 altoSax = \transpose es c \relative c'' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
-  d8 b4 d8 r2 | es8 c4 es8 r2 | d8 es d es d es b\prall as | des4-- des8 c r2
+  d8 ces4 d8 r2 | es8 c4 es8 r2 | d8 es d es d es ces\prall as | des4-- des8 c r2
   \repeat volta 2 {
     r8 c r4 r8 c r4 | r8 c r4 r8 c \tuplet 3/2 {as f d'~} | d4. es8~ es c es4 | r8 d8~ d4 d d |
     r8 des r4 r8 d r4 | r8 es r4 r8 a r8 as~ | as4. g8 r2
@@ -121,14 +121,14 @@ altoSax = \transpose es c \relative c'' {
     { r8 as'~ as4 ges ges }
   }
   % B
-  r4 r8 as~ as4 r8 ges~ | ges4 ges8 ges r2 | r8 c~ c4 e8 c bes as | c4 es8 des r2 |
+  r4 r8 as,~ as4 r8 ges~ | ges4 ges8 ges r2 | r8 c'~ c4 e8 c bes as | c4 es8 des r2 |
   r8 f, r4 g4. f8 | r es r8 d r8 c r4 | r8 as r bes ~ bes4 r | r8 as f g r2
   % A3
   r8 c r4 r8 c r4 | r8 c r4 r8 c \tuplet 3/2 {as f d'~} | d4. es8~ es c es4 | r8 d8~ d4 d d |
   r8 des r4 r8 d r4 | r8 es r4 r8 a r8 as~ | as4. g8 r4 g8 as | r4 f8 g r2
   r8 as~ as4 bes8 c r4
   % intro
-  d,8 b4 d8 r2 | es8 c4 es8 r2 | d8 es d es d es b\prall as | des4 des8 c r2
+  d,8 ces4 d8 r2 | es8 c4 es8 r2 | d8 es d es d es ces\prall as | des4 des8 c r2
   \slash
   \repeat unfold 9 \slAs  \undo \hide Stem des4 des8 des r2
   \endSlash
@@ -191,6 +191,26 @@ breaksAs = {
         \structure
         \breaksAs
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes, es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #16
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAs
+        \tenorSax
       >>
     >>
   }

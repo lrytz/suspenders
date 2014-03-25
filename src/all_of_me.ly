@@ -78,8 +78,8 @@ trumpet = \transpose bes c \relative c''' {
   \pageBreak
   \slash
   \repeat volta 3 {
-    \repeat unfold 13 \slTp as4 as \endSlash \tuplet 3/2 {r4 r des-.^"3rd time only"}  \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {f-. f-. f-.} as2 \slash
-    \repeat unfold 12 \slTp \endSlash r8 des,~^"3rd time only" des4 bes des | f2 f2 | des4 r as'8 as g g | ges4 r8 f8~ f2 \rightBreakMark "Repeat 3x"
+    \repeat unfold 13 \slTp as4 as \endSlash \tuplet 3/2 {r4 r des-.^"last time only"}  \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {f-. f-. f-.} as2 \slash
+    \repeat unfold 12 \slTp \endSlash r8 des,~^"last time only" des4 bes des | f2 f2 | des4 r as'8 as g g | ges4 r8 f8~ f2 \rightBreakMark "Repeat ad lib"
   }
   r8 des~ des4 bes des | r4 r8 des~ des4 f | as1~ | as4. es'8 r2 |
 }
@@ -87,18 +87,13 @@ trumpet = \transpose bes c \relative c''' {
 remarksTrumpet = \lyricmode {
   \skip 2..
   \skip 1*64
-  \markupBox "1. Fills (Solo Voc), 2. Tacet (Solo Sax), 3. Thema (frei)" 1 % duration
-  \skip 1*15
-  \markupBox "2. Solo"
+  \markupBox "Open Soli (Voc, Sax, Trumpet) - Thema Voc - Thema Trumpet" 1 % duration
 }
 
 breaksTrumpet = {
   s2..
-  s1*4  \break
-  s1*7  \break
-  s1*7  \break
-  s1*7  \break
-  s1*39 \break
+  s1*32 \break
+  s1*32 \break
   s1*4  \break
   s1*4  \break
   s1*4  \break
@@ -116,9 +111,9 @@ altoSax = \transpose es c \relative c''   {
   r8 r4 r2 |
   \slash
   \repeat volta 5 {
-  \repeat unfold 13 \slAs des4 des \endSlash \tuplet 3/2 {r4 r as'-.^"5th time only"}  \tuplet 3/2 {as-. as-. as-.} \tuplet 3/2 {as-. as-. as-.} \tuplet 3/2 {des-. des-. des-.} f2 \slash
+  \repeat unfold 13 \slAs des4 des \endSlash \tuplet 3/2 {r4 r as'-.^"last time only"}  \tuplet 3/2 {as-. as-. as-.} \tuplet 3/2 {as-. as-. as-.} \tuplet 3/2 {des-. des-. des-.} f2 \slash
   \repeat unfold 16 \slAs
-  \rightBreakMark "Repeat 5x"
+  \rightBreakMark "Repeat ad lib"
   }
   \repeat unfold 3 \slAs | des,4 des r2 |
   \endSlash
@@ -128,10 +123,8 @@ remarksAlto = \lyricmode {
   \skip 2..
   \markup \box { \column {
     \line { 1. Fills (Thema tp), 2. Fills (Thema voc),}
-    \line { 3. Tacet, 4. Solo, 5. Fills (Thema tp) }
+    \line { 3... Open Soli (Voc, Sax, Trumpet) - Fills (Thema Voc) - Fills (Thema Trumpet) }
   } } 1
-  \skip 1*15
-  \markupBox "4. Tacet"
 }
 
 breaksAlto = {
@@ -182,6 +175,27 @@ breaksAlto = {
         \structureAs
         \breaksAlto
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes, es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    markup-system-spacing #'padding = #8
+    system-system-spacing #'basic-distance = #15 % increase space
+  }
+  \score {
+    <<
+      \lyricsAbove \remarksAlto
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structureAs
+        \breaksAlto
+        \tenorSax
       >>
     >>
   }

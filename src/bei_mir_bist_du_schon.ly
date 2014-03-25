@@ -139,7 +139,7 @@ altoSax = \transpose f c \relative c'' {
     e4 e e \endSlash c_"On D.S."
   }
   % coda
-  gis'2 e | d c | r8 e' dis e dis d cis b | c4 r cis,2 \fermata |
+  gis'2 e | d c | r8 e' dis e dis d cis b | c4 r c,2 \fermata |
 }
 
 breaksAs = {
@@ -214,6 +214,31 @@ breaksAs = {
         \structure
         \breaksAs
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes, es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    % fit on one page
+    system-system-spacing = #'(
+      (basic-distance . 10)
+      (minimum-distance . 0)
+      (padding . 0)
+      (stretchability . 0))
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAs
+        \tenorSax
       >>
     >>
   }

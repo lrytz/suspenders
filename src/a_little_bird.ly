@@ -20,7 +20,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 208
+  \tempo 4 = 202
   \leftMark \markupBox "Intro Piano"
   s1*4 \bar "||"
   \leftMark \markupBox "Voc AABA"
@@ -30,10 +30,10 @@ structure = {
   s1*12 \bar "||"
 
   \leftMark \markupBox "Bridge, break"
-  s1*12 \bar "||"
+  s1*12
 
-  \leftMark \markupBox "Choir AA"
-  s1*16 \bar "||"
+  \leftMark \markupBox "Open Soli"
+  s1*16
 
   \leftMark \markupBox "Bridge, break"
   s1*12 \bar "||"
@@ -50,12 +50,19 @@ structure = {
 remarks = \lyricmode {
 }
 
-theChords = \chordmode {
+soloChords = \chordmode {
+  \set Score.proportionalNotationDuration = #(ly:make-moment 1 8 )
+  bes1 s s s c:7 g:7 bes2 c:m7 bes:6/f c:m7
+  \unset Score.proportionalNotationDuration
 }
 
-altoChords = \transpose c c \theChords
+theChords = \chordmode {
+  s1*4 s1*32 s1*12 s1*12 \soloChords \soloChords
+}
 
-trumpetChords = \transpose c c \theChords
+trumpetChords = \transpose f c \theChords
+
+altoChords = \transpose bes c \theChords
 
 slT = \absolute {a''4}
 slS = \absolute {d''4}
@@ -67,7 +74,7 @@ pauseses = {
   R1*32
   R1*12
   R1*12
-  R1*16
+  \repeat volta 2 R1*16
   R1*12
   R1*8
   R1*8
@@ -79,7 +86,8 @@ breaks = {
   s1*32 \break
   s1*12 \break
   s1*12 \break
-  s1*16 \break
+  s1*4 \break s1*4 \break s1*4 \break s1*4 \break % solo
+  % s1*16 \break
   s1*12 \break
   s1*8 \break
   s1*8 \break
@@ -91,14 +99,14 @@ ending = {
   r8 bes4. g8-. a \tuplet 3/2 {bes c cis} | d4 f,8 bes~ bes2
 }
 
-trumpet = \transpose g c \relative c''' {
+trumpet = \transpose f c \relative c''' {
   \global
   \set Staff.instrumentName = #"Trumpet"
   \pauseses
   \ending
 }
 
-altoSax = \transpose c c \relative c'' {
+altoSax = \transpose bes, c \relative c'' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   \pauseses
@@ -126,7 +134,7 @@ altoSax = \transpose c c \relative c'' {
 \book {
   \bookOutputSuffix "tp"
   \paper {
-    system-system-spacing #'basic-distance = #15 % increase space
+    system-system-spacing #'basic-distance = #14 % increase space
     % fit on one page
     % system-system-spacing = #'(
     %   (basic-distance . 10)
@@ -149,7 +157,7 @@ altoSax = \transpose c c \relative c'' {
 \book {
   \bookOutputSuffix "as"
   \paper {
-    system-system-spacing #'basic-distance = #16 % increase space
+    system-system-spacing #'basic-distance = #14 % increase space
   }
   \score {
     <<

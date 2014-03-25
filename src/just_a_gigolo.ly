@@ -30,7 +30,7 @@ structure = {
 remarks = \lyricmode {
   \skip 8
   \skip 1*16
-  \markupBox "1. Fills as (Thema), 2. Solo tp, Fills as (long notes)"
+  \markupBox "1. Fills Sax (Thema Voc), 2. Open Soli, 3. Fills (Thema Voc)"
 }
 
 chorusChords = \chordmode {
@@ -40,21 +40,25 @@ chorusChords = \chordmode {
   a2:m7 c:m6 g:6 a:7 a:m7 d:7 g:6 d:7sus4
 }
 
-codaChords = \chordmode {
-  a2:m7 c:m6 g:6 a:7 a:m7 d:7 g:6
+codaChordsTp = \chordmode {
+  a2:m7 c:m6 s4 g2:6 a:7 s4 a2:m7 d:7 g:6
 }
+
+codaChordsAs = \chordmode {
+  a2:m7 c:m6 g2:6 a:7 a2:m7 d:7 g:6
+}
+
 
 theChords = {
   \partial 8 s8
   \chorusChords
   \set Score.proportionalNotationDuration = #(ly:make-moment 1 8 )
   \chorusChords
-  \codaChords
   \unset Score.proportionalNotationDuration
 }
 
-trumpetChords = \transpose bes c \theChords
-altoChords = \transpose es c \theChords
+trumpetChords = \transpose bes c {\theChords \codaChordsTp}
+altoChords = \transpose es c {\theChords \codaChordsAs}
 
 slTp = \relative c''' { a4 }
 slAs = \relative c'' { d4 }
@@ -72,9 +76,9 @@ trumpet = \transpose bes c \relative c''' {
 
   \repeat volta 2 {
     \slash
-    \repeat unfold 14 \slbTp
+    \repeat unfold 12 \slbTp
     \endSlash
-    r8^"last time (end of solo)" c b c d4 b | a8 g4. r4 a8 b |
+    c8^"last time (in thema)" c b a c4 g8 a | b b \tuplet 3/2 {a g b~} b2 | r8 c b c d4 b | a8 g4. r4 a8 b |
   }
   c c \tuplet 3/2 {b a c~} c4\fermata
      \cadenzaOn \slash a4^"cadenza" \endSlash \cadenzaOff
@@ -170,6 +174,26 @@ breaksAs = {
         \structure
         \breaksAs
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #16 % increase space
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAs
+        \tenorSax
       >>
     >>
   }
