@@ -21,7 +21,7 @@ global = {
 structure = {
   \tempo 4 = 120
   \partial 2.
-  s2.
+  s2.^"laid-back"
   \bar "||"
   s1*8 % intro
   s1*8 % A
@@ -38,10 +38,10 @@ structure = {
 remarks = \lyricmode {
   \partial 2. \skip 2.
   \skip 1*8
-  \markupBox "1. Tacet (Thema), 2. Solo as 3. Tacet (Thema)" 1
+  \markupBox "1. Tacet (Thema), 2. Solo Sax, ... 3. Tacet (Thema)" 1
   \skip 1*15
   \skip 1*15
-  \markupBox "1. Solo as, 3. Fill as"
+  \markupBox "1. Solo Sax, 3. Fill Sax"
   \skip 1
   \markupBox "Fill piano"
 }
@@ -70,24 +70,24 @@ theChords = {
   \unset Score.proportionalNotationDuration
 }
 
-trumpetChords = \transpose fis c \theChords
-altoChords = \transpose b c \theChords
+trumpetChords = \transpose f c \theChords
+altoChords = \transpose bes c \theChords
 
 slTp = \relative c'' { e4 }
 slAs = \relative c''' { a4 }
 slbTp = \repeat unfold 4 \slTp
 slbAs = \repeat unfold 4 \slAs
 
-trumpet = \transpose fis c \relative c''' {
+trumpet = \transpose f c \relative c'' {
   \global
   \set Staff.instrumentName = #"Trumpet"
   \partial 2. r4 r2
-  R1*8
+  R1*6 | fis4 fis f4. e8 | r1
   \repeat volta 3 {
     \slash
     \repeat unfold 16 \slbTp
     \endSlash
-    f,1^"1st and 3rd time only"~ | f2. r4 | e1~ | e2. r4 |
+    f1^"1st and 3rd time only"~ | f2. r4 | e1~ | e2. r4 |
     e1 | g | fis | r
     \slash
     \repeat unfold 6 \slbTp
@@ -111,7 +111,7 @@ breaksTp = {
   s1*4 \break
 }
 
-altoSax = \transpose b c \relative c'''' {
+altoSax = \transpose bes c \relative c'''' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   \partial 2. r4 g,8 a c4 |
@@ -198,6 +198,26 @@ breaksAs = {
         \structure
         \breaksAs
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #15 % increase space
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAs
+        \tenorSax
       >>
     >>
   }

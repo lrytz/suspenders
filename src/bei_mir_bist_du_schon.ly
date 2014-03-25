@@ -40,7 +40,7 @@ remarks = \lyricmode {
   \skip 1*16
   \skip 1*32
   % markup here because it needs to be above chords
-  \markupBox "1. Tacet (Thema), 2. Solo as, 3. Solo tp / piano (share), 4. Fills tutti (Thema)" 1
+  \markupBox "1. Tacet (Thema), 2. Open Soli (Sax, Trumpet&Piano), 3. Fills tutti (Thema)" 1
   \skip 1*15
   \markupBox "1. Fills tutti"
   \skip 1*7
@@ -91,10 +91,12 @@ trumpet = \transpose c c \relative c'' {
     \slash
     \repeat unfold 16 \slTp
     \endSlash
+    \tiny
     <<
-    { \voiceOne a1_"3. only (Solo as)"( | a) | a( | a2) r | a1( | a) | b1 | b2 r2 }
+    { \voiceOne a1_"Background for Soli"( | a) | a( | a2) r | a1( | a) | b1 | b2 r2 }
     { \voiceTwo f1( | f) | e( | e2) r | f1( | fis) | gis1( | gis2) r2 }
     >>
+    \normalsize
     \oneVoice
     \slash
     \repeat unfold 7 \slTp

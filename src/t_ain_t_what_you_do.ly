@@ -31,10 +31,11 @@ structure = {
   s1*8 % voc A
   s1*8 \bar "||" % voc B
   s1*8 % voc A
-  \leftMark \markupBox "Solo Sax"
-  s1*8 % solo sax
+  \leftMark \markupBox "Solo Bass"
+  s1*8 % solo bass
   \rightMark \markupBox "Repeat 3x"
-  s1*10 \bar "||" % solo drum
+  s1*0^\markupBox "Solo Drums"
+  s1*8 \leftMark "On Cue" s1*2 \bar "||" % solo drum
   s1*8 \bar "|."
 
 }
@@ -52,7 +53,7 @@ bChords = \chordmode {
   as f:m7 bes s
 }
 
-altoChords = \transpose f c \chordmode {
+altoChords = \transpose ges c \chordmode {
   \partial 4. s4.
   s1*8 s1
   \bChords
@@ -66,7 +67,7 @@ altoChords = \transpose f c \chordmode {
   % \unset Score.proportionalNotationDuration
 }
 
-trumpetChords = \transpose c c \chordmode {
+trumpetChords = \transpose des c \chordmode {
   \partial 4. s4.
   s1*8 s1
   s1*8
@@ -77,12 +78,12 @@ trumpetChords = \transpose c c \chordmode {
   \transpose es des \aChords
 }
 
-slT = \absolute {bes'4}
-slS = \absolute {es''4}
+slT = \absolute {c''4}
+slS = \absolute {f''4}
 slbT = \repeat unfold 4 \slT
 slbS = \repeat unfold 4 \slS
 
-trumpet = \transpose c c \relative c'' {
+trumpet = \transpose des c \relative c'' {
   \global
   \set Staff.instrumentName = #"Trumpet"
   \partial 4. r8 r4
@@ -115,12 +116,12 @@ trumpet = \transpose c c \relative c'' {
   R1*8 % B
   R1*8 % A
   \key des \major
-  % solo sax
+  % solo bass
 
   \slash
   \repeat volta 3 \repeat unfold 8 \slbT
   \endSlash
-  R1*7 r4 as2.~ as1~ as2. r4 |
+  \repeat volta 2 {R1*8} | as1~ as2. r4 |
   r2 as~ | as r | r bes~ | bes r |
   r as~ | as r | r bes4. des8~ | des2. r4
 }
@@ -128,7 +129,7 @@ trumpet = \transpose c c \relative c'' {
 breaks = {
 }
 
-altoSax = \transpose f c \relative c'' {
+altoSax = \transpose ges c \relative c'' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   \partial 4. r8 r8 es8
@@ -144,7 +145,7 @@ altoSax = \transpose f c \relative c'' {
   r1 r \slash s1*0^"Fills" \slbS \slbS
   r1 \slbS r1 \slS \slS \slS \endSlash r8 es |
   r es r es es4 r | r2 r4 r8 es | r es r es es4 r | r2 r4 r8 es |
-  r es r es es4 r | r1 | ges4 es beses'8 as ges es~ | es4 r r c |
+  r es r es es4 r | r1 | ges4 es beses'8 as ges es~ | es4 r r c' |
 
   % tutti
   es2 des4. c8~ | c2 c4 c | es2 des4. c8~ | c2 c4 c |
@@ -162,11 +163,11 @@ altoSax = \transpose f c \relative c'' {
 
   \key des \major
 
-  %solo sax
+  %solo bass
   \slash
   \repeat volta 3 \repeat unfold 8 \slbS
   \endSlash
-  R1*7 r4 bes,2.~ bes1~ bes2. des4^^ |
+  \repeat volta 2 {R1*8} | bes,1~ bes2. des4^^ |
     as'2 r8 des, f \grace ges16( g8) | r8 ges~ ges fes des bes des4^^ | as'2 r8 des, f \grace ges16( g8) | r8 ges~ ges fes des bes des4^^ |
     as'2 r8 des, f \grace ges16( g8) | r8 ges~ ges fes des bes des4^^ | as'2 ges8 g as bes~ | bes2. r4
 
@@ -193,7 +194,7 @@ altoSax = \transpose f c \relative c'' {
 \book {
   \bookOutputSuffix "tp"
   \paper {
-    system-system-spacing #'basic-distance = #15 % increase space
+    system-system-spacing #'basic-distance = #16 % increase space
     % fit on one page
     % system-system-spacing = #'(
     %   (basic-distance . 10)
@@ -216,7 +217,7 @@ altoSax = \transpose f c \relative c'' {
 \book {
   \bookOutputSuffix "as"
   \paper {
-    system-system-spacing #'basic-distance = #15 % increase space
+    system-system-spacing #'basic-distance = #16 % increase space
   }
   \score {
     <<
@@ -226,6 +227,26 @@ altoSax = \transpose f c \relative c'' {
         \structure
         \breaks
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #16
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaks
+        \tenorSax
       >>
     >>
   }

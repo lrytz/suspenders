@@ -30,7 +30,7 @@ structure = {
 remarks = \lyricmode {
   \skip 8
   \skip 1*16
-  \markupBox "1. Fills Sax (Thema Voc), 2. Open Soli, 3. Fills (Thema Voc)"
+  \markupBox "1. Fills Sax (Thema Voc), 2. Open Soli (Trumpet, Piano), 3. Fills (Thema Voc)"
 }
 
 chorusChords = \chordmode {

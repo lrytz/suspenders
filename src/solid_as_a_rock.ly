@@ -27,9 +27,12 @@ structure = {
   s1*16
   \bar "||"
   s1*12
-  s1*0^"play only if no choir"
+  % s1*0^"play only if no choir"
   s1*12 % A
-  s1*20
+  \leftMark "Solo Piano"
+  s1*4
+  \leftMark "On Cue"
+  s1*2
   \bar "|."
 
 }
@@ -67,7 +70,7 @@ trumpetA = \relative c''' {
 }
 
 trumpet = {
-  \transpose as c \relative c''' {
+  \transpose g c \relative c''' {
     \global
     \set Staff.instrumentName = #"Trumpet"
     \partial 2. r4 r2
@@ -88,25 +91,22 @@ trumpet = {
 
     \trumpetA as,1^"open" | as2. r4 |
   }
-  \transpose gis c \relative c''' {
+  \transpose g c \relative c''' {
     \key a \major
 
     \repeat volta 2 {
       \transpose as a \trumpetA a2^"1st time only" fis4 e | c8 b a4 fis2
     }
 
-    R1*4
-    \repeat unfold 3 {r8 a'4.~ a4. r8}
-    r8 a4.~ a4. r8^"open"
-    R1*9
-    r1^"rit."
-    r2 a2^\markup \right-align \italic "\"...with me\"" \fermata | a2\fermata r2
+    \repeat volta 2 {R1*4}
+    r2\fermata a'\fermata | a\fermata r
   }
 }
 
 
 breaksTp = {
-  % s1*8 \break
+  \partial 2. s2.
+  s1*62 \break
 }
 
 altoAFirst = \relative c'' {
@@ -120,7 +120,7 @@ altoA = \relative c'' {
 }
 
 altoSax = {
-  \transpose des c \relative c'' {
+  \transpose c c \relative c'' {
     \global
     \set Staff.instrumentName = #"Alto Sax"
     \partial 2. es,4-. f-. as-.
@@ -140,24 +140,21 @@ altoSax = {
 
     \altoA | r2 des4-- c-- | des1 | c2. r4 |
   }
-  \transpose cis c \relative c'' {
+  \transpose c c \relative c'' {
     \key a \major
 
     \repeat volta 2 {
-      \transpose as a \altoA r2 d4-. cis-. | r1 | r4 e,-.^"play ending" fis-. a-.
+      \transpose as a \altoA r2 d4-. cis-. | R1*2 % r1 | r4 e,-.^"play ending" fis-. a-.
     }
-    \transpose as a \altoAFirst | r2 fis4 a8 c~ | c a8~ a4 r2 |
-    r2 fis4 a8 c~ | c a8~ a4 r2 | R1*2
-    e2 fis4 a8 c~ | c a8~ a4 r2 | R1*2
-    e2 fis4 a8 c~ | c a8~ a4 r2 | r1 r^"rit."
-    r2 d2^\markup \right-align \italic "\"...with me\"" \fermata | cis2\fermata r2
+    \repeat volta 2 {R1*4}
+    r2\fermata d\fermata | cis\fermata r
 
   }
 }
 
 breaksAs = {
   \partial 2. s2.
-  s1*8
+  s1*62 \break
 }
 
 % \book {
@@ -214,6 +211,26 @@ breaksAs = {
         \structure
         \breaksAs
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #15 % increase space
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAs
+        \tenorSax
       >>
     >>
   }

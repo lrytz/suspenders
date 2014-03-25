@@ -8,6 +8,7 @@
 
 \paper {
   markup-system-spacing #'padding = #3 %space after title
+  ragged-last = ##t % don't stretch last line
 }
 
 global = {
@@ -38,9 +39,9 @@ structure = {
 remarks = \lyricmode {
   \partial 4. \skip 4.
   \skip 1*8
-  \markupBox "1. Background (Thema), 2. Solo Sax" 1
+  \markupBox "1. Background (Thema), 2. Open Soli (Sax, others)" 1
   \skip 1*8
-  \markupBox "1./2. Background (Thema)"
+  \markupBox "1. Background (Thema), On Cue After Soli Background (Thema), to Coda"
 }
 
 chorusChords = \chordmode {
@@ -62,8 +63,8 @@ theChords = {
   \unset Score.proportionalNotationDuration
 }
 
-trumpetChords = \transpose d c \theChords
-altoChords = \transpose g c \theChords
+trumpetChords = \transpose c c \theChords
+altoChords = \transpose f c \theChords
 
 slTp = \relative c'' { e4 }
 slAs = \relative c''' { a4 }
@@ -74,7 +75,7 @@ introLick = \relative c'' {
   r8 f, bes f as f r8 f | bes f as f
 }
 
-trumpet = \transpose d c \relative c'' {
+trumpet = \transpose c c \relative c'' {
   \global
   \set Staff.instrumentName = #"Trumpet"
   \partial 4. r4.
@@ -110,7 +111,7 @@ breaks = {
   s1*4 \break
 }
 
-altoSax = \transpose g c \relative c''' {
+altoSax = \transpose f c \relative c''' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   \partial 4. r4.
@@ -191,6 +192,26 @@ altoSax = \transpose g c \relative c''' {
         \structure
         \breaks
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #15
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaks
+        \tenorSax
       >>
     >>
   }

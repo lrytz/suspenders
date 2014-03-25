@@ -81,7 +81,7 @@ trumpet = \transpose bes c \relative c''' {
     \repeat unfold 13 \slTp as4 as \endSlash \tuplet 3/2 {r4 r des-.^"last time only"}  \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {des-. des-. des-.} \tuplet 3/2 {f-. f-. f-.} as2 \slash
     \repeat unfold 12 \slTp \endSlash r8 des,~^"last time only" des4 bes des | f2 f2 | des4 r as'8 as g g | ges4 r8 f8~ f2 \rightBreakMark "Repeat ad lib"
   }
-  r8 des~ des4 bes des | r4 r8 des~ des4 f | as1~ | as4. es'8 r2 |
+  r8 des~ des4 bes des | r4 r8 des~ des4 f | as1~ | as2 r |
 }
 
 remarksTrumpet = \lyricmode {

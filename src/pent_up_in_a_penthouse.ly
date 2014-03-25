@@ -33,11 +33,11 @@ structure = {
 
 remarks = \lyricmode {
   \skip 1*4
-  \markupBox "1. Solo Piano, 2. Backgrounds (Thema) 3. Solo (Tutti)" 1
+  \markupBox "1. Tacet (Solo Piano), 2. Play Notes (Thema), 3. Solo Voc+Trumpet, 4. Play Notes" 1
   \skip 1*15
-  \markupBox "3. Solo Piano"
+  \markupBox "2. Fills Sax, 3. Solo Piano, 4. Fills Sax"
   \skip 1*7
-  \markupBox "3. Fills (Thema)"
+  \markupBox "2. & 4. Play Notes (Thema)"
   \skip 1*3
   \markupBox "Breaks"
 }
@@ -80,14 +80,14 @@ trumpet = \transpose bes c \relative c''' {
   \set Staff.instrumentName = #"Trumpet"
   R1*4
   \repeat volta 3 {
-    as4.^"2nd time only" r8 g4. f8 | r8 d r4 r2 | as'4. r8 g4. f8 | r8 d r4 r2 |
+    as4.^"Plunger, 2nd time only" r8 g4. f8 | r8 d r4 r2 | as'4. r8 g4. f8 | r8 d r4 r2 |
     as'4. r8 g4. f8 | r8 d r4 r2 | r1 | r1
     as'4. r8 g4. f8 | r8 d r4 r2 | as'4. r8 g4. f8 | r8 d r4 r2 |
     as'4. r8 g4. f8 | r8 d r4 r2 | r1 | r1
     r1 R1*7
     as'4.^"2nd time only" r8 g4. f8 | r8 d r4 r2 | as'4. r8 g4. f8 | r1
     R1*4
-    r1 R1*2 \cross f4^"3. Fine" f8 f8 \endCross r2
+    r1 R1*2 \cross f4^"4. Fine" f8 f8 \endCross r2
   }
 }
 
@@ -105,7 +105,7 @@ breaksTp = {
   s1*4
 }
 
-altoSax = \transpose es c \relative c''' {
+altoSax = \transpose es c \relative c'' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   R1*4
@@ -117,7 +117,7 @@ altoSax = \transpose es c \relative c''' {
     r1 R1*7
     d4.^"2nd time only" r8 des4. c8 | r8 a r4 r2 | d4. r8 des4. c8 | r1
     R1*4
-    r1^"2nd time fills" R1*2 \cross bes,4^"3. Fine" bes8 bes8 \endCross r2
+    r1^"2nd time fills" R1*2 \cross bes4^"4. Fine" bes8 bes8 \endCross r2
   }
 }
 
@@ -188,6 +188,26 @@ breaksAs = {
         \structure
         \breaksAs
         \altoSax
+      >>
+    >>
+  }
+}
+
+tenorSax = \transpose bes es \altoSax
+tenorChords = \transpose bes es \altoChords
+\book {
+  \bookOutputSuffix "ts"
+  \paper {
+    system-system-spacing #'basic-distance = #15 % increase space
+  }
+  \score {
+    <<
+      \lyricsAbove \remarks
+      \new ChordNames \tenorChords
+      \new Staff = "tenorSax" <<
+        \structure
+        \breaksAs
+        \tenorSax
       >>
     >>
   }
