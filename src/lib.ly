@@ -1,5 +1,3 @@
-\version "2.18.0"
-
 slash = {
   \override NoteHead.style = #'slash
   \hide Stem

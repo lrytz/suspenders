@@ -1,4 +1,5 @@
 #(ly:set-option 'relative-includes #t)
+\version "2.18.0"
 \include "lib.ly"
 
 \header {
