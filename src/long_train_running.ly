@@ -33,8 +33,8 @@ structure = {
   s1*0^\markupBox "B1"
   s1*12 % verse with breaks, horn background
 
-  s1*0^\markupBox "Solo Sax"
-  s1*12 % solo sax (open, repeated)
+  s1*0^\markupBox "Solo Trumpet"
+  s1*12 % solo (open, repeated)
 
   s1*0^\markupBox "B2"
   s1*12 \bar "||" % verse with breaks, horn background, sax fills
@@ -44,21 +44,11 @@ structure = {
 
   s1*0^\markupBox "Intro"
   s1*4 \bar "||" % intro git
-  s1*8 % intro hornz (repeated)
+  s1*4 % intro hornz (repeated)
 
   s1*0^\markupBox "D"
-  s1*4 % horn kicks 2,4 (repeated)
-  s1*4 % cadence (repeated)
-  s1*4 % cadence, break
-
-  s1*0^\markupBox "Solo Drums"
-  s1*4 % solo perc, with git (repeated)
-
-  s1*0^\markupBox "Horns vs Git"
-  s1*14 \bar "||" % 3x 2-2 horn section vs. git
-
-  s1*0^\markupBox "Ending"
-  s1*10 \bar "|." % cadence with horn break
+  s1*17 \bar "||"
+  s1*7 \bar "|."
 
 
 }
@@ -70,48 +60,39 @@ breaks = {
   s1*12 \break %sax
   s1*12 \break %b2
   s1*12 \break %c
-  s1*12 \break %intro
-  s1*4
-  s1*4
-  s1*4
-  s1*4 \break %drum
-  s1*4 %\break %horns git
-  s1*4 %\break
-  s1*4 %\break
-  s1*2 \break
-  s1*3 \break
+  s1*8 \break %intro
 }
 
 
 remarks = \lyricmode {
 }
 
-theChords = \transpose c c \chordmode {
+theChords = \chordmode {
   s1*8 %intro
   s1*12 %a
   s1*12 %b
   g1:m s1*3 c1:m s1 g:m s1 es g2:m/d d g1:m s
 }
 
-altoChords = \transpose as es \theChords
+altoChords = \transpose es f \theChords
 
-trumpetChords = \transpose bes es \theChords
+trumpetChords = \transpose bes f \theChords
 
-slTp = \relative c''' { bes4 bes bes bes }
-slAs = \relative c'' { bes4 bes bes bes }
+slTp = \relative c' { es4 es es es }
+slAs = \relative c'' { a4 a a a }
 
 introTp = \relative c' {
   d2~ d8 r16 f g g f bes~ bes f g8~ g4~ g4 r8. f'16~
   f8 g-. d-- f-. c-- d-. bes-. r16 g~ g2
 }
-kickTp = \relative c'' { r8 d f16 g8 g16 }
-cadenceTp = \relative c''' { g1 g2 fis g8 r r4 }
+kickTp = \relative c' { r8 d f16 g8 g16 }
+cadenceTp = \relative c'' { g1 g2 fis g8 r r4 }
 
 massive = \relative c'' {
-  f16 g8 f16 r f d8 f g r16 g8 g16 r f d8 f g r16 g8 g16 r f d8
+  f,16 g8 f16 r f d8 f g r16 g8 g16 r f d8 f g r16 g8 g16 r f d8
 }
 
-trumpet = \transpose bes es' \relative c'' {
+trumpet = \transpose bes f' \relative c'' {
   \global
   \set Staff.instrumentName = #"Trumpet"
 
@@ -122,53 +103,67 @@ trumpet = \transpose bes es' \relative c'' {
     \cadenceTp \kickTp r1
   }
 
-  \repeat unfold 3 { g4 r r2 } R1*3 r2 \kickTp r1 \cadenceTp r2 r1
-  \repeat volta 2 R1*12
+  \repeat unfold 3 { g,4 r r2 } R1*3 r2 \kickTp r1 \cadenceTp r2
+  \slash s1*0^"pickup" \slTp \repeat volta 2 {\repeat unfold 12 \slTp} \endSlash
 
   R1*6 r2 \kickTp r1
   \cadenceTp \kickTp r1
 
-  \repeat unfold 3 {d4-. d-. d-. d8-. cis--} d4-. r r2 R1*2
-  r2 \kickTp r1 g1 g2 fis es1~ es \fermata
+  \repeat unfold 3 {d'4-. d-. d-. d8-. cis--} d4-. r r2 R1*2
+  r2 \kickTp r1 g,1 g2 fis es1~ es \fermata
 
-  R1*4 \introTp r2 \introTp r8 g~ g16 g8.
+  R1*4 \introTp r8 g'~ g16 g8.
 
-  \repeat volta 2 { r4 g r2 r4 g r2 r4 g r2 r1 }
-  \repeat volta 2 { \cadenceTp \kickTp r1 }
-  g1 g2 fis g2. \fall r4 r1
-
-  \repeat volta 2 R1*4
-
-  d4 bes f16 g8 g16 r f d8 f g r16 g8 g16 r f d d f8 g d'4 \raise r r2 r1
-
-  c16 des c bes r g8 d16 f g8 g f16 d8 f g r16 g8 g16 r f d d f8 g cis16 d cis d r4 r2
-  r2 r4 bes16 bes a g
- 
-  a8 g r16 d8 f16 r g8 d16 g g d d f8 g r8 r16 g~ g g d d f8 g d'4 \raise  r r2
-  r2 r4 r16 bes a g
-
-  a g8 g16 r d8 d16 f8 g r16 d8 f16 r g8 r16 d'4 \fall r d16 f r8
-  \massive bes4 \fall r r2
-
+  \repeat volta 2 {
+    R1*6 r2 \kickTp r1
+  }
+  \alternative {
+    {\cadenceTp \kickTp r1}
+    {g,1 g2 fis \massive}
+  }
+  bes4 \fall r r2
   g1 g2 fis
-
   \massive
+  g1 g,1 \glissando g''4 r r2
 
-  g1 g,,1 \glissando g''4 r r2
+  %% ending as on live recording
+
+  % \repeat volta 2 { r4 g r2 r4 g r2 r4 g r2 r1 }
+  % \repeat volta 2 { \cadenceTp \kickTp r1 }
+  % g1 g2 fis g2. \fall r4 r1
+
+  % \repeat volta 2 R1*4
+
+  % d4 bes f16 g8 g16 r f d8 f g r16 g8 g16 r f d d f8 g d'4 \raise r r2 r1
+
+  % c16 des c bes r g8 d16 f g8 g f16 d8 f g r16 g8 g16 r f d d f8 g cis16 d cis d r4 r2
+  % r2 r4 bes16 bes a g
+ 
+  % a8 g r16 d8 f16 r g8 d16 g g d d f8 g r8 r16 g~ g g d d f8 g d'4 \raise  r r2
+  % r2 r4 r16 bes a g
+
+  % a g8 g16 r d8 d16 f8 g r16 d8 f16 r g8 r16 d'4 \fall r d16 f r8
+  % \massive bes4 \fall r r2
+
+  % g1 g2 fis
+
+  % \massive
+
+  % g1 g,,1 \glissando g''4 r r2
 }
 
-introAs = \relative c' {
+introAs = \relative c'' {
   d2~ d8 r16 f g g f bes~ bes f g8~ g4~ g4 r8. c16~
   c8 d-. bes-- c-. g-- bes-. f-. r16 d~ d2
 }
 kickAs = \relative c'' { r8 bes bes16 d8 d16 }
 cadenceAs = \relative c'' { es1 d2 c bes8 r r4 }
 
-altoSax = \transpose es es \relative c' {
+altoSax = \transpose es f \relative c' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
 
-  R1*4 \introAs r8 bes'~ bes16 bes8.
+  R1*4 \introAs r8 bes''~ bes16 bes8.
 
   \repeat volta 2 {
     R1*6 r2 \kickAs r1
@@ -182,32 +177,49 @@ altoSax = \transpose es es \relative c' {
   \cadenceAs \kickAs r1
 
   \repeat unfold 3 {g4-. g-. g-. g8-. fis--} g4-. r r2 R1*2
-  r2 \kickAs r1 es'1 d2 c g1~ g \fermata
+  r2 \kickAs r1 es1 d2 c g1~ g \fermata
 
-  R1*4 \introAs r2 \introAs r8 bes~ bes16 bes8.
+  R1*4 \introAs r8 bes~ bes16 bes8.
 
-  \repeat volta 2 { r4 bes r2 r4 bes r2 r4 bes r2 r1 }
-  \repeat volta 2 { \cadenceAs \kickAs r1 }
-  es1 d2 c bes2. \fall r4 r1
+  \repeat volta 2 {
+    R1*6 r2 \kickAs r1
+  }
+  \alternative {
+    {\cadenceAs \kickAs r1}
+    {es1 d2 c \transpose c c' \massive}
+  }
 
-  \repeat volta 2 R1*4
-
-  d4 bes f16 g8 g16 r f d8 f g r16 g8 g16 r f d d f8 g bes4 \raise r r2 r1
-
-  c16 des c bes r g8 d16 f g8 g f16 d8 f g r16 g8 g16 r f d d f8 g a16 bes a bes r4 r2
-  r2 r4 bes16 bes a g
- 
-  a8 g r16 d8 f16 r g8 d16 g g d d f8 g r8 r16 g~ g g d d f8 g bes4 \raise  r r2
-  r2 r4 r16 bes a g
-
-  a g8 g16 r d8 d16 f8 g r16 d8 f16 r g8 r16 bes4 \fall r d16 f r8
-  \massive g4 \fall r r2
+  g'4 \fall r r2
 
   es1 d2 c
 
-  \massive
+  \transpose c c' \massive
 
   es1 bes,1 \glissando bes''4 r r2
+
+
+  % \repeat volta 2 { r4 bes r2 r4 bes r2 r4 bes r2 r1 }
+  % \repeat volta 2 { \cadenceAs \kickAs r1 }
+  % es1 d2 c bes2. \fall r4 r1
+
+  % \repeat volta 2 R1*4
+
+  % d4 bes f16 g8 g16 r f d8 f g r16 g8 g16 r f d d f8 g bes4 \raise r r2 r1
+
+  % c16 des c bes r g8 d16 f g8 g f16 d8 f g r16 g8 g16 r f d d f8 g a16 bes a bes r4 r2
+  % r2 r4 bes16 bes a g
+ 
+  % a8 g r16 d8 f16 r g8 d16 g g d d f8 g r8 r16 g~ g g d d f8 g bes4 \raise  r r2
+  % r2 r4 r16 bes a g
+
+  % a g8 g16 r d8 d16 f8 g r16 d8 f16 r g8 r16 bes4 \fall r d16 f r8
+  % \massive g4 \fall r r2
+
+  % es1 d2 c
+
+  % \massive
+
+  % es1 bes,1 \glissando bes''4 r r2
 }
 
 % \book {

@@ -33,13 +33,10 @@ structure = {
   s1*4
 
   s1*10 %bridge
-  s1*14 \bar "||"
-  s1*12 \bar "||"
+  s1*14
   s1*4
-
   s1*4 s1
 
-  s1*4
   s1*6 \bar "|."
 }
 
@@ -50,7 +47,6 @@ breaks = {
   s1*4
   s1*10 \break
   s1*14
-  s1*12 \break
   s1*4 \break
   s1*4 \break
 }
@@ -117,15 +113,13 @@ trumpet = \transpose bes g \relative c' {
 
   \introRiffTp \introEndTp
 
-  \kicksDropTp r4 \kicksDropTp r4 \kicksDropTp r4 \kicksDropTp c
-  \kicksDropTp r4 \kicksDropTp c
+  \repeat volta 2 { \kicksDropTp r4 \kicksDropTp c }
 
-  \laufTpA r4 \laufTpBClosed \laufTpA r4 \laufTpBOpen
-  \repeat volta 3 { \laufTpA r8 g \laufTpBClosed \laufTpA r8 g }
+  \repeat volta 2 { \laufTpA r8 g \laufTpBClosed \laufTpA r8 g }
   \alternative { { \laufTpBOpen } { r1 } }
 
   r4 g f8 fis4 g8 | r1 
-  \repeat volta 2 { c8 bes4 g8~ g8 f4 bes8 | r1 | r4 g f8 fis4 g8 | r1 }
+  % \repeat volta 2 { c8 bes4 g8~ g8 f4 bes8 | r1 | r4 g f8 fis4 g8 | r1 }
 
   \introRiffTp c8 bes4 g8~ g8 f4 c'8~ | c4 c r2
 }
@@ -149,17 +143,19 @@ altoSax = \transpose es g \relative c'' {
 
   \introRiffBs \introEndBs
 
-  \repeat unfold 4 { \kicksBs r4 r1 }
-  \transpose c f { \kicksBs r4 r1 }
-  \kicksBs r4 r1
-  \transpose c g { \kicksBs r8 c' r1 }
+  \repeat volta 3 {
+    \repeat unfold 4 { \kicksBs r4 r1 }
+    \transpose c f { \kicksBs r4 r1 }
+    \kicksBs r4 r1
+    \transpose c g { \kicksBs r8 c' r1 }
 
-  \introEndBs
+    \introEndBs
 
-  \repeat unfold 2 { \kicksBs r4 r1 }
-  \transpose c f { \kicksBs r4 r1 }
-  \kicksBs r4 r2 r4 r8 fis,
-  \chromaticBs r8 g r4 r2 \introEndBs
+    \repeat unfold 2 { \kicksBs r4 r1 }
+    \transpose c f { \kicksBs r4 r1 }
+    \kicksBs r4 r2 r4 r8 fis,
+    \chromaticBs r8 g r4 r2 \introEndBs
+  }
 
   c8 bes4 g8~ g8 f4 es8 | r4 f~ f2 | r1 | r4 bes,4 r4 r8 e |
 
@@ -172,15 +168,10 @@ altoSax = \transpose es g \relative c'' {
   \kicksBs r4 r1 \transpose c f \kicksBs r4 r1 \kicksBs r4 r2 r4 r8 fis, \chromaticBs r1
   \introRiffBs \introEndBs
 
-  \repeat unfold 2 { \kicksChromaticBs r4 }
-  \repeat unfold 2 { \kicksChromaticBs r4 \kicksChromaticBs g'4 }
+  \repeat volta 2 { \kicksChromaticBs r4 \kicksChromaticBs g'4 }
 
-  \laufBsA r8 r8 c,,
-  \laufBsBClosed bes8 b
-  \laufBsA r8 r8 c
-  \laufBsBOpen \tuplet 3/2 { r4 bes b }
-  \repeat volta 3 {
-    \laufBsA r8 r8 c
+  \repeat volta 2 {
+    \laufBsA r8 r8 c,,
     \laufBsBClosed bes8 b
     \laufBsA r8 r8 c
   }
@@ -189,10 +180,10 @@ altoSax = \transpose es g \relative c'' {
     {r2 r4 r8 fis'}
   }
   \chromaticBs r8 g r4 r2 | 
-  \repeat volta 2 {
-    c8 bes4 g8~ g8 f4 f8 | r2 r4 r8 fis
-    \chromaticBs r8 g r4 r2
-  }
+  % \repeat volta 2 {
+  %   c8 bes4 g8~ g8 f4 f8 | r2 r4 r8 fis
+  %   \chromaticBs r8 g r4 r2
+  % }
   \introRiffBs c8 bes4 g8~ g8 f4 g,8~ | g4 g4 r2 |
 }
 

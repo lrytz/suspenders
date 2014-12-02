@@ -64,12 +64,12 @@ theChords = \transpose c e \chordmode {
   \repeat unfold 3 {g s f s}
 }
 
-altoChords = \transpose es as \theChords
+altoChords = \transpose es ces \theChords
 
 trumpetChords = \transpose c c \theChords
 
 slT = \absolute {a''4}
-slS = \absolute {fis'4}
+slS = \absolute {dis'4}
 slbT = \repeat unfold 4 \slT
 slbS = \repeat unfold 4 \slS
 
@@ -82,7 +82,7 @@ lickAs = \relative c' {
   cis8 gis' a( e')~ e4 a,8 gis
 }
 
-altoSax = \transpose es as \relative c' {
+altoSax = \transpose es ces' \relative c' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
 

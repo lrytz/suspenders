@@ -36,7 +36,7 @@ structure = {
   s1*0^\markup \fontsize #2 "Bridge"
   s1*8 \bar "||" % bridge
   s1*8 \bar "||" % chorus
-  s1*4 \bar "||" % intro (dal segno)
+  s1*4 % intro (dal segno)
   \rightBreakMark \markupBox "D.S. al Coda"
 
   s1*0^\markup {
@@ -44,8 +44,10 @@ structure = {
     \right-align
     \musicglyph #"scripts.coda"
   }
-  s1*8 % breaks
-  s1*8 % chorus, repeated
+  s1*4 % breaks
+  \leftMark \markupBox "On Cue"
+  s1*8 \bar "||" % chorus
+  s1*5 \bar "|."
 }
 
 remarks = \lyricmode {
@@ -85,11 +87,11 @@ slbT = \repeat unfold 4 \slT
 slbS = \repeat unfold 4 \slS
 
 introTp = \relative c' {
-  r1 | r8 c''8 r4 r2 | r8. es,16 r4 r8. es,16 r4 | r16 es' as, bes c es c as' r4 r16 d,8. |
+  r1 | r8 c''8 r4 r2 | r8. es16 r4 r8. es,16 r4 | r16 es' as, bes c es c es r4 r16 d8. |
 }
 
 chorusTp = \relative c'' \repeat unfold 2 {
-  r4 r16 bes16 c8 es16 es r8 r4 | r1 | r4 r8 des r16 des16 r8 r4 | r4 r8 es r2
+  r4 r16 bes'16 c8 es16 es r8 r4 | r1 | r4 r8 des r16 des16 r8 r4 | r4 r8 es r2
 }
 
 trumpet = \transpose bes e \relative c' {
@@ -100,7 +102,7 @@ trumpet = \transpose bes e \relative c' {
   \introTp
 
   % verse simple
-  es'4 r4 r2 | R1*2 | es8. es16 r8 es~ es4 r | R1*3 | es8. es16 r8 es~ es4 r |
+  es''4 r4 r2 | R1*2 | es,8. es16 r8 es~ es4 r | R1*3 | es8. es16 r8 es~ es4 r |
 
   % chorus
   \chorusTp
@@ -117,10 +119,11 @@ trumpet = \transpose bes e \relative c' {
   \introTp
 
   %coda
-  R1*8
+  \repeat volta 2 R1*4
 
   %ending
-  \repeat volta 2 { \chorusTp }
+  \chorusTp
+  \introTp es'4 r r2
 }
 
 breaks = {
@@ -136,16 +139,16 @@ breaks = {
   s1*8 % chorus
   s1*4 \break % intro (dal segno)
 
-  s1*8 % breaks
-  s1*8 % chorus, repeated
+  s1*4 % breaks
+  s1*8 % chorus
 }
 
 introAs = \relative c {
-  r1 | r8 f''8 r4 r2 | r8. es16 r4 r8. es,16 r4 | r16 es' as, bes c es c es r4 r16 b8. |
+  r1 | r8 f''8 r4 r2 | r8. es16 r4 r8. es,16 r4 | r16 es'' as, bes c es c as' r4 r16 b,8. |
 }
 
 chorusAs = \relative c'' \repeat unfold 2 {
-  r4 r16 g16 g8 bes16 bes r8 r4 | r1 | r4 r8 as r16 as16 r8 r4 | r4 r8 bes r2
+  r4 r16 g'16 g8 bes16 bes r8 r4 | r1 | r4 r8 as r16 as16 r8 r4 | r4 r8 bes r2
 }
 
 altoSax = \transpose es e \relative c {
@@ -156,7 +159,7 @@ altoSax = \transpose es e \relative c {
   \introAs
 
   % verse simple
-  c''4 r4 r2 | R1*2 | as8. as16 r8 g~ g4 r | R1*3 | bes8. bes16 r8 bes~ bes4 r |
+  c'''4 r4 r2 | R1*2 | as,8. as16 r8 g~ g4 r | R1*3 | bes8. bes16 r8 bes~ bes4 r |
 
   \chorusAs
 
@@ -172,10 +175,11 @@ altoSax = \transpose es e \relative c {
   \introAs
 
   %coda
-  R1*8
+  \repeat volta 2 R1*4
 
   %ending
-  \repeat volta 2 { \chorusAs }
+  \chorusAs
+  \introAs c'4 r4 r2
 }
 
 % \book {
@@ -202,7 +206,7 @@ altoSax = \transpose es e \relative c {
 \book {
   \bookOutputSuffix "tp"
   \paper {
-    % system-system-spacing #'basic-distance = #15 % increase space
+    system-system-spacing #'basic-distance = #11 % increase space
     % fit on one page
     % system-system-spacing = #'(
     %   (basic-distance . 10)
@@ -225,7 +229,7 @@ altoSax = \transpose es e \relative c {
 \book {
   \bookOutputSuffix "as"
   \paper {
-    system-system-spacing #'basic-distance = #11 % increase space
+    system-system-spacing #'basic-distance = #9 % increase space
   }
   \score {
     <<
@@ -245,7 +249,7 @@ tenorChords = \transpose bes es \altoChords
 \book {
   \bookOutputSuffix "ts"
   \paper {
-    % system-system-spacing #'basic-distance = #16
+    system-system-spacing #'basic-distance = #11
   }
   \score {
     <<

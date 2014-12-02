@@ -23,9 +23,10 @@ global = {
 structure = {
   \tempo 4 = 106
 
-  s1*4 \bar "||" % intro
+  \leftMark \markupBox "Intro"
+  s1*4 % intro
 
-  \leftMark "Vocals"
+  \leftMark \markupBox "On Cue"
   s1*8 % verse a
   \pSegno
   s1*8 \bar "||" % verse b
@@ -91,7 +92,7 @@ trumpet = \transpose bes a \relative c' {
   \global
   \set Staff.instrumentName = #"Trumpet"
 
-  R1*4
+  \repeat volta 2 R1*4
   R1*8
 
   \repeat volta 3 {
@@ -127,11 +128,11 @@ altoSax = \transpose es a \relative c'' {
   \global
   \set Staff.instrumentName = #"Baritone Sax"
 
-  R1*4
-  R1*7 | r2 r4 r8 g
+  \repeat volta 2 R1*4
+  R1*7 | r2 r4 r8 g(
 
   \repeat volta 3 {
-    as2. r8 as | g2. r8 g | as2. bes4 | g2. r8 g | as2. r8 as | g2. r4 | bes1~ | bes2. r4 |
+    as2.) r8 as | g2. r8 g | as2. bes4 | g2. r8 g | as2. r8 as | g2. r4 | bes1~ | bes2. r4 |
 
     \repeat unfold 2 {
       \repeat unfold 2 { r8 es, r es es16 f8 g16 r4 }
@@ -140,8 +141,8 @@ altoSax = \transpose es a \relative c'' {
 
     R1*7 | r2 r4 r8 << bes^\markup "1st" \\ g_\markupBox "2nd, D.S." >> |
 
-    es8 es r4 r4 r8 bes' | es, es r4 r4 r8 e | f f r4 r4 r8 e | f f r4 r4 r8 bes |
-    es,8 es r4 r4 r8 bes' | es, es r4 r4 r8 e | f f r4 r4 r8 e | f f r4 r4 r8 g |
+    es8-. es r4 r4 r8 bes'( | es,-.) es r4 r4 r8 e( | f-.) f r4 r4 r8 e | f-. f r4 r4 r8 bes |
+    es,8-. es r4 r4 r8 bes' | es,-. es r4 r4 r8 e | f-. f r4 r4 r8 e | f-. f r4 r4 r8 g |
   }
 
   \repeat unfold 2 {

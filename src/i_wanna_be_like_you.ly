@@ -102,7 +102,7 @@ trumpet = \transpose bes a \relative c'' {
 
   \repeat volta 2 { s1*0^\markupBox "Fertig Blockflöte" R1*6 }
   \alternative { R1*2 {r1 r4 bes8 c d es f fis} }
-  g4 f8 es~ es2 | r4 es, g b | c2~ c8 bes g es | c2. r4 |
+  g4 f8 es~ es2 | r4 es, g bes | c2~ c8 bes g e | c2. r4 |
   f8 a4 c,8 f a c, f | as2 \glissando d | g,4. f8 es4. f8 | es2 r
 
   s1*0^\markupBox "Fills Trombone Style" R1*16
@@ -183,7 +183,7 @@ altoSax = \transpose es a \relative c' {
     c'4. a8~ a2 | bes4. f8~ f2
   }
   \alternative {
-    {g4 g ges2 r8 f | r f f4 g}
+    {g4 g ges2 | r8 f r f f4 g}
     {g2 f8 g f4 e2. r4}
   }
   c'4. a8~ a2 | bes4. f8~ f2
