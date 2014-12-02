@@ -84,6 +84,7 @@ pCoda = {
 }
 
 fall = \bendAfter #-2
+raise = \bendAfter #2
 
 % don't know how to put \bendAfter into a music-function.
 % current usage: \be c \nd
