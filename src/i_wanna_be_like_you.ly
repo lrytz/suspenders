@@ -24,7 +24,7 @@ structure = {
   \tempo 4 = 196 
 
   s1*8  % intro
-  s1*9  % verse
+  s1*16  % verse
   s1*10 \bar "||" % chorus
   s1*8  \bar "||" % solo
 
@@ -32,7 +32,7 @@ structure = {
   s1*10 % chorus
   s1*8  % solo
 
-  s1*9  \bar "||"  % verse 3
+  s1*16  \bar "||"  % verse 3
   s1*12 % tutti
 
   s1*8  % solo
@@ -42,7 +42,7 @@ structure = {
 
 breaks = {
   s1*8 \break
-  s1*9 \break
+  s1*16 \break
   s1*10 \break
   s1*8 \break
 
@@ -50,7 +50,7 @@ breaks = {
   s1*10 \break
   s1*8 \break
 
-  s1*9 \break
+  s1*16 \break
   s1*12 \break
 
   s1*8 \break
@@ -61,12 +61,12 @@ breaks = {
 remarks = \lyricmode {
 }
 
-verse = \chordmode { a1:m s s e:7 s s s a:m }
+verse = \chordmode { a1:m s s e:7 s s s }
 chorus = \chordmode { c1 s a:7 s d:7 g:7 c2 es:6 d:7 g:7 }
 
 theChords = \transpose c es \chordmode {
-  \verse 
-  \verse a2:m g:7
+  \verse a1:m
+  \verse a1:m \verse a2:m g:7
   \chorus c2 f:7 c g:7
 
   c1 s a:7 s d:7 g:7 c2 f:7 c g:7
@@ -75,8 +75,8 @@ theChords = \transpose c es \chordmode {
   a2:m e:7 a1:m s e:7 s s s a2:m g:7
   \chorus c2 f:7 c e:7
 
-  \verse
-  \verse a2:m g:7
+  \verse a1:m
+  \verse a1:m a2:m g:7
 
   c1 s a:7 s d:7 g:7 c2 bes:7 a1:7 d:7 g:13 c2 f:7 c g
 
@@ -90,6 +90,13 @@ altoChords = \transpose es a \theChords
 
 trumpetChords = \transpose bes a \theChords
 
+flute = \relative c' {
+  \tiny
+  r4 es^\markupBox "Fills Blockflöte" f r | f es8 c r2 | r4 es8 f f4 r8 c' g4 f8 d r2 |
+  r4 f8 g b4 c8 b | r d, f g b c b cis, | d f b c b g d g | c g es c~ c4 r |
+  r4 c'8 b c4 r8 c | b4 bes r bes | a r as8 g~ g4~ | g8 f d b r2 |
+  r4 c' b r8 bes | r4 bes a8 as r as | g4. g8 f4 es | c
+}
 
 trumpet = \transpose bes a \relative c'' {
   \global
@@ -97,23 +104,22 @@ trumpet = \transpose bes a \relative c'' {
 
   \repeat unfold 7 r1 c4 r4 r2
 
-  \repeat volta 2 { s1*0^\markupBox "Fills Blockflöte" R1*7 }
-  \alternative { r1 r1 }
+  \flute r4 r2 \normalsize
 
-  \repeat volta 2 { s1*0^\markupBox "Fertig Blockflöte" R1*6 }
-  \alternative { R1*2 {r1 r4 bes8 c d es f fis} }
+  \repeat volta 2 { g1~ g | bes~ bes2. r4 | a1 | as }
+  \alternative { {g4 r bes2 | a4 r as2} {g2 as g4 bes8^"Solo" c d es f fis} }
+
   g4 f8 es~ es2 | r4 es, g bes | c2~ c8 bes g e | c2. r4 |
   f8 a4 c,8 f a c, f | as2 \glissando d | g,4. f8 es4. f8 | es2 r
 
   s1*0^\markupBox "Fills Trombone Style" R1*16
 
-  \repeat volta 2 { es'1~ es | e~ e2. r4 | es1 | d }
-  \alternative { {es4 r e2 | es4 r d2} {es2 c es r} }
+  \repeat volta 2 { g1~ g | bes~ bes2. r4 | a1 | as }
+  \alternative { {g4 r bes2 | a4 r as2} {g2 as g r} }
 
   \repeat volta 2 { s1*0^\markupBox "Solo Tutti" R1*8 }
 
-  \repeat volta 2 { s1*0^\markupBox "Fills Blockflöte" R1*7 }
-  \alternative { r1 {r4 r8 g bes bes a as} }
+  \flute \normalsize r8 g' bes bes a as
 
   g4^\markupBox "Solo Tutti" es es2 R1*7
   g8 c4 g8 c4 g8 bes |
@@ -121,10 +127,10 @@ trumpet = \transpose bes a \relative c'' {
   es1 \glissando es'4 r bes r
 
   \repeat volta 2 {
-    g,4 es g r g8 es r4 g8 es r4
-    g4 e g r g8 e r4 g8 e r4
-    g8 c, r4 r2 g'8 d r4 r2
-    es4 c es8 f es es r4 es8 f g2
+    bes,4 g bes r bes8 g r4 bes8 g r4
+    bes4 g bes r bes8 g r4 bes8 g r4
+    c8 a r4 r2 bes8 f r4 r2
+    bes4 g as8 bes as g r4 g8 as bes2
   }
 
   \repeat volta 2 {
@@ -150,35 +156,33 @@ altoSax = \transpose es a \relative c' {
 
   \repeat unfold 7 r1 es4 r4 r2
 
-  \repeat volta 2 { s1*0^\markupBox "Fills Blockflöte" R1*7 }
-  \alternative { r1 r1 }
+  \flute r4 r2 \normalsize
 
-  \repeat volta 2 { s1*0^\markupBox "Fertig Blockflöte" R1*6 }
-  \alternative { R1*2 R1*2 }
+  \repeat volta 2 { es1~ es | e~ e2. r4 | es1 | d }
+  \alternative { {es4 r e2 | es4 r d2} {es2 c es r} }
   
   R1*8
 
   s1*0^\markupBox "Fills Trombone Style" R1*16
 
-  \repeat volta 2 { g1~ g | bes~ bes2. r4 | a1 | as }
-  \alternative { {g4 r bes2 | a4 r as2} {g2 as g r} }
+  \repeat volta 2 { es1~ es | e~ e2. r4 | es1 | d }
+  \alternative { {es4 r e2 | es4 r d2} {es2 c es r} }
 
   \repeat volta 2 { s1*0^\markupBox "Solo Tutti" R1*8 }
 
-  \repeat volta 2 { s1*0^\markupBox "Fills Blockflöte" R1*7 }
-  \alternative { r1 r1 }
+  \flute r4 r2 \normalsize
 
   s1*0^\markupBox "Solo Tutti" R1*10 g2 as g4 r bes r
 
   \repeat volta 2 {
-    bes,4 g bes r bes8 g r4 bes8 g r4
-    bes4 g bes r bes8 g r4 bes8 g r4
-    c8 a r4 r2 bes8 f r4 r2
-    bes4 g as8 bes as g r4 g8 as bes2
+    g4 es g r g8 es r4 g8 es r4
+    g4 e g r g8 e r4 g8 e r4
+    g8 c, r4 r2 g'8 d r4 r2
+    es4 c es8 f es es r4 es8 f g2
   }
 
   \repeat volta 2 {
-    bes'4 g g2 r8 g r g g4 g |
+    bes4 g g2 r8 g r g g4 g |
     g e e2 r8 e r e e4 e
     c'4. a8~ a2 | bes4. f8~ f2
   }
@@ -218,7 +222,7 @@ altoSax = \transpose es a \relative c' {
 \book {
   \bookOutputSuffix "tp"
   \paper {
-    system-system-spacing #'basic-distance = #18 % increase space
+    system-system-spacing #'basic-distance = #15 % increase space
     % fit on one page
     % system-system-spacing = #'(
     %   (basic-distance . 10)
@@ -241,7 +245,7 @@ altoSax = \transpose es a \relative c' {
 \book {
   \bookOutputSuffix "as"
   \paper {
-    system-system-spacing #'basic-distance = #18 % increase space
+    system-system-spacing #'basic-distance = #15 % increase space
   }
   \score {
     <<
@@ -261,7 +265,7 @@ tenorChords = \transpose bes es \altoChords
 \book {
   \bookOutputSuffix "ts"
   \paper {
-    system-system-spacing #'basic-distance = #18
+    system-system-spacing #'basic-distance = #15
   }
   \score {
     <<
