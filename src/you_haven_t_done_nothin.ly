@@ -3,7 +3,7 @@
 \include "lib.ly"
 
 \header {
-  title = "This Old Heart of Mine"
+  title = "You Haven't Done Nothin'"
   tagline = ""
 }
 
@@ -15,128 +15,102 @@
 global = {
   \time 4/4
   \clef "violin"
-  \key c \major
+  \key es \major
   \set Score.skipBars = ##t % combine multi-rests
   \accidentalStyle "modern-voice-cautionary" % print some reduntant accidentals in parenthesis, e.g. (#)
 }
 
 structure = {
-  \tempo 4 = 128
-
+  \tempo 4 = 104
 
   s1*0^\markupBox "Intro"
-  s1*8 \bar "||"
+  \repeat volta 2 s1*4
 
-  s1*0^\markupBox "Verse"
-  \pSegno
-  s1*8 \bar "||"
-  s1*8 \pCoda \bar "||"
-  s1*0^\markupBox "Chorus"
-  s1*8 \bar "||"
-
-  s1*0^\markupBox "Verse"
+  \repeat volta 2 {
+    s1*0^\markupBox "A"
+    \pSegno
+    s1*8
+    s1*0^\markupBox "B"
+    s1*6 \rightBreakMark \markupBox "To Coda"
+    s1*4
+  }
   s1*4 \bar "||"
-  s1*8 \bar "||"
-  s1*0^\markupBox "Chorus"
-  s1*8 % \bar "||"
-
-  s1*0^\markupBox "Solo Barisax"
-  \bar ".|:" s1*4 \bar ":|.|:" % solo bari
   \rightBreakMark \markupBox "D.S."
 
   s1*0^\markup { \right-align \fontsize #4 \musicglyph #"scripts.coda" }
-  s1*8 \bar ":|."
+  s1*4 \bar "|."
 }
 
 breaks = {
-  s1*8
-
-  s1*8
-  s1*8
-  s1*8 \break
-
-  s1*4
-  s1*8
-  s1*8 \break
-
   s1*4 \break
 
-  s1*8
+  s1*14 \break
+  s1*4 \break
+
+  s1*4 \break
 }
 
-remarks = \lyricmode {
+remarks = \lyricmode { 
 }
 
 theChrods = \chordmode {
-  s1*52
-  c1 e:m f d2:m g:7
 }
 
-altoChords = \transpose es d \theChrods
+altoChords = \transpose es es \theChrods
 
-trumpetChords = \transpose bes d \theChrods
+trumpetChords = \transpose bes bes \theChrods
 
 slT = \absolute {a''4}
 slS = \absolute {d''4}
 slbT = \repeat unfold 4 \slT
 slbS = \repeat unfold 4 \slS
 
-trumpet = \transpose bes d \relative c'' {
+tpLick = \relative c' {
+  es8-- es-. g-- bes-. des4\fall c\fall r8 es,16 g~ g bes des8\fall r des16 des c8\fall
+}
+
+trumpet = \transpose bes g \relative c'' {
   \global
   \set Staff.instrumentName = #"Trumpet"
 
-  R1*8
-
-  R1*2 f4 f8 f e4 e8 e | d4 d8 d c d4. |
-  g,4. g8 r2 | r1 | f'4 f8 f e4 e8 e | d4 d8 d c d4 e8 |
-
-  f2. r8 cis | d2. r8 fis | g2. r8 f | e2. r8 e |
-  f2. r8 cis | d2. r8 e | f4. f8 g4. g8 | a4. a8 b4. b8
-
-  g,4. g8 r2 | r1 | f'4 f8 f e4 e8 e | d4 d8 d c d4. |
-  g,4. g8 r2 | r1 | f'4 f8 f e4 e8 e | d4 d8 d c d4. |
-
-  g,4. g8 r2 | r1 | f'4 f8 f e4 e8 e | d4 d8 d c d4 e8 |
-
-  f2. r8 cis | d2. r8 fis | g2. r8 f | e2. r8 e |
-  f2. r8 cis | d2. r8 e | f4. f8 g4. g8 | a4. a8 b4. b8
-
-  g,4. g8 r2 | r1 | f'4 f8 f e4 e8 e | d4 d8 d c d4. |
-  g,4. g8 r2 | r1 | f'4 f8 f e4 e8 e | d4 d8 d c d4. |
-
   R1*4
 
-  g4. g8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4. |
-  g,4. g8 r2 | r1 | f'4 f8 f e4 e8 e | d4 d8 d c d4. |
+  es,8\fall^"Only 2nd/3rd time" r r4 r2
+  R1*7
+  s1*0^"Only 2nd/3rd time"
+  as'2 as8 g ges f\fall r4 c8\fall r f\fall r c\fall r
+  f\fall r c\fall r f\fall r c f\fall r4 d8\fall r f\fall r d\fall r
+  es-- es-. d-- d-. des c ces bes~ | bes2 r16 des \tuplet 3/2 { a as ges } as ges8.
+  s1*0^"Play always"
+  \tpLick es16 es \tpLick r8
+
+  \tpLick es16 es \tpLick r8
+
+  \tpLick es16 es \tpLick r8
 }
 
-altoSax = \transpose es d \relative c' {
+asLick = \relative c' {
+  bes8-- bes-. des-- es-. ges4\fall f\fall r8 bes,16 des~ des es ges8\fall r ges16 ges f8\fall
+}
+
+altoSax = \transpose es g \relative c'' {
   \global
-  \set Staff.instrumentName = #"Baritone Sax"
-
-  R1*8
-
-  R1*2 f4 f8 f e4 e8 e | d4 d8 d c d4. |
-  c4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4 cis8 |
-
-  d4. d8 r d r fis | g4. g8 r g r dis | e4. e8 r e r b' | a4. a8 r a r cis, |
-  d4. d8 r d r fis | g4. g8 r g r cis, | d4. d8 e4. e8 | f4. f8 g g g g |
-
-  c,4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4. |
-  c4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4. |
-
-  c4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4 cis8 |
-
-  d4. d8 r d r fis | g4. g8 r g r dis | e4. e8 r e r b' | a4. a8 r a r cis, |
-  d4. d8 r d r fis | g4. g8 r g r cis, | d4. d8 e4. e8 | f4. f8 g g g g |
-
-  c,4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4. |
-  c4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4. |
+  \set Staff.instrumentName = #"Alto Sax"
 
   R1*4
 
-  c4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4. |
-  c4. c8 r2 | r1 | f4 f8 f e4 e8 e | d4 d8 d c d4. |
+  bes,8\fall^"Only 2nd/3rd time" r r4 r2
+  R1*7
+  s1*0^"Only 2nd/3rd time"
+  es'2 es8 d des c\fall r4 a8\fall r c\fall r a\fall r
+  c\fall r a\fall r c\fall r a bes\fall r4 f8\fall r bes\fall r f\fall r
+  bes-- bes-. a-- a-. as g ges f~ | f2 r16 des' \tuplet 3/2 { a as ges } as ges8.
+  s1*0^"Play always"
+  \asLick bes,16 bes \asLick r8
+
+  \asLick bes16 bes \asLick r8
+
+  \asLick bes16 bes \asLick r8
 }
 
 % \book {
