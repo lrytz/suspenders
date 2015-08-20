@@ -96,7 +96,7 @@ chorusTp = \relative c'' {
   b2 ais | a gis4. gis8 | fis8 r r4 r2 | r1
 }
 
-trumpet = \transpose bes as \relative c' {
+trumpet = \transpose bes bes \relative c' {
   \global
   \set Staff.instrumentName = #"Trumpet"
 
@@ -123,7 +123,7 @@ chorusAs = \relative c' {
   dis2 cis | cis b4. d8 | b8 r r4 r2 | r1
 }
 
-altoSax = \transpose es as \relative c {
+altoSax = \transpose es bes \relative c {
   \global
   \set Staff.instrumentName = #"Alto Sax"
 
