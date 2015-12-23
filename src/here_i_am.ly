@@ -69,7 +69,7 @@ slS = \absolute {d''4}
 slbT = \repeat unfold 4 \slT
 slbS = \repeat unfold 4 \slS
 
-trumpet = \transpose bes ges \relative c'' {
+trumpet = \transpose bes beses \relative c'' {
   \global
   \set Staff.instrumentName = #"Trumpet"
 
@@ -98,7 +98,7 @@ trumpet = \transpose bes ges \relative c'' {
   }
 }
 
-altoSax = \transpose es ges \relative c'' {
+altoSax = \transpose es beses \relative c'' {
   \global
   \set Staff.instrumentName = #"Alto Sax"
   a2 gis8 gis4 a8~ | a2 r
@@ -120,7 +120,7 @@ altoSax = \transpose es ges \relative c'' {
   }
 
   \repeat volta 2 {
-    \repeat unfold 4 { r4 a16 a b b gis8 gis r e' | r1 } 
+    \repeat unfold 4 { r4 a16 a b b gis8 gis r e' | r1 }
   }
 }
 
