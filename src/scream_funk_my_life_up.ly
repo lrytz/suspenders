@@ -127,7 +127,7 @@ altoSax = \transpose es bes \relative c {
   \global
   \set Staff.instrumentName = #"Alto Sax"
 
-  R1*4 
+  R1*4
 
   \repeat volta 2 {
     \verseAs
@@ -204,8 +204,8 @@ altoSax = \transpose es bes \relative c {
   }
 }
 
-tenorSax = \transpose bes es \altoSax
-tenorChords = \transpose bes es \altoChords
+tenorSax = \transpose bes es' \altoSax
+tenorChords = \transpose bes es' \altoChords
 \book {
   \bookOutputSuffix "ts"
   \paper {
