@@ -21,7 +21,7 @@ global = {
 }
 
 structure = {
-  \tempo 4 = 196 
+  \tempo 4 = 196
 
   s1*8  % intro
   s1*16  % verse
@@ -76,7 +76,7 @@ theChords = \transpose c es \chordmode {
   \chorus c2 f:7 c e:7
 
   \verse a1:m
-  \verse a1:m a2:m g:7
+  \verse a1:m \verse a2:m g:7
 
   c1 s a:7 s d:7 g:7 c2 bes:7 a1:7 d:7 g:13 c2 f:7 c g
 
@@ -140,7 +140,7 @@ trumpet = \transpose bes a \relative c'' {
   }
   \alternative {
     {c4 bes c2 r8 c r c bes4 c}
-    {es2 des8 es des4 c2. r4} 
+    {es2 des8 es des4 c2. r4}
   }
   g'4. c,8~ c2 | g'4. d8~ d2
   es2 des8 es des4 c2. r4
@@ -160,7 +160,7 @@ altoSax = \transpose es a \relative c' {
 
   \repeat volta 2 { es1~ es | e~ e2. r4 | es1 | d }
   \alternative { {es4 r e2 | es4 r d2} {es2 c es r} }
-  
+
   R1*8
 
   s1*0^\markupBox "Fills Trombone Style" R1*16
