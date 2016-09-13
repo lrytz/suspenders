@@ -26,14 +26,11 @@ structure = {
   s1*12^\markupBox "Intro" % intro
 
   s1*13^\markupBox "A" \bar "||"
-  \pSegno
   s1*12^\markupBox "B" \bar "||"
   s1*12^\markupBox "Solo Sax" \bar "||"
   s1*12^\markupBox "B"
-  \rightBreakMark \markupBox "to Coda"
   s1*12^\markupBox "A1" \bar "||"
-  \rightBreakMark \markupBox "D.S. al Coda"
-  s1*12^\markup { \right-align \fontsize #4 \musicglyph #"scripts.coda" } \bar "|."
+  s1*12 \bar "|."
 }
 
 breaks = {
@@ -50,12 +47,12 @@ remarks = \lyricmode {
 
 theChords = \chordmode { c1:7 s s s f:7 f:7 c:7 c:7 g:7 f:7 c:7 c2:7 g:7 }
 
-altoChords = \transpose es d { s1*37 \theChords }
+altoChords = \transpose es f { s1*37 \theChords }
 
-trumpetChords = \transpose bes d { s1*37  \theChords }
+trumpetChords = \transpose bes f { s1*37  \theChords }
 
 tpB = \relative c' {
-  \repeat unfold 4 { g'4 r r2 }
+  \repeat unfold 3 { g'4 r r2 } r1
 }
 
 saxA = \relative c' {
@@ -63,7 +60,7 @@ saxA = \relative c' {
 }
 
 saxB = \relative c' {
-  \repeat unfold 4 { c4 r r2 }
+  \repeat unfold 3 { c4 r r2 } r1
 }
 
 
@@ -84,7 +81,7 @@ saxRest = \relative c' {
 saxEnd = \relative c' { c8-. c-. e-- g-. bes-- a-. r4 }
 saxEndDom = \relative c' { g8-. g-. b-- d-. bes'-- a-. r4 }
 
-trumpet = \transpose bes d' \relative c' {
+trumpet = \transpose bes f' \relative c' {
   \global
   \set Staff.instrumentName = #"Trumpet"
 
@@ -100,7 +97,7 @@ trumpet = \transpose bes d' \relative c' {
 
   \repeat volta 2 { \saxA \saxLineTwo } \saxLineThree \saxEnd
 
-  \saxA \saxLineTwo
+  \saxB \saxLineTwo
 
   g'8-. g-. b-. b-. d-. d-. g-- f-. | f,4 r r2
 
@@ -108,7 +105,7 @@ trumpet = \transpose bes d' \relative c' {
 }
 
 
-altoSax = \transpose es d \relative c' {
+altoSax = \transpose es f \relative c' {
   \global
   \set Staff.instrumentName = #"Baritone Sax"
 
@@ -124,7 +121,7 @@ altoSax = \transpose es d \relative c' {
 
   \repeat volta 2 { \saxA \saxLineTwo } \saxLineThree \saxEnd
 
-  \saxA \saxLineTwo
+  \saxB \saxLineTwo
 
   g'8-. g-. b-. b-. d-. d-. g-- f-. | f,4 r r2
 

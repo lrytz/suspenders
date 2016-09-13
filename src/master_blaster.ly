@@ -24,7 +24,6 @@ structure = {
   \tempo 4 = 134
 
   s1*4 \bar "||" % intro dr
-  s1*8           % band
 
   s1*8           % band (rep, 2nd time horns)
 
@@ -36,7 +35,7 @@ structure = {
   s1*8           % chorus (rep, with horns)
 
   s1*8 \bar "||" % interlude
-  s1*8           % band
+  s1*8^\markupBox "Solo Sax"
 
   s1*8           % verse (rep, 2nd time horns)
   s1*8           % chors (open rep, with horns)
@@ -59,14 +58,14 @@ remarks = \lyricmode {
 verse = \chordmode { c1:m c2:m bes as1 aes2 g f1 f c:m bes }
 chorus = \chordmode { c1:m g:7 f:7 f:7 c:m g:7 f:7 f:7 }
 
-theChords = \transpose c c \chordmode { s1*72 \verse \chorus }
+theChords = \transpose c c \chordmode { s1*56 \verse s1*8 \chorus }
 
 altoChords = \transpose es f \theChords
 
 trumpetChords = \transpose bes f \theChords
 
 verseTp = \relative c' {
-    r4^"2nd time only" r8. es16 g8 r16 c es8 r | r2 r4 r8. d16 | c8 r16 as es8 r r2 | r2 r4 r8. f16 |
+    r4 r8. es16 g8 r16 c es8 r | r2 r4 r8. d16 | c8 r16 as es8 r r2 | r2 r4 r8. f16 |
     a8 r16 c f8 r r2 | r1 | r4 r8. g16 es8 r16 c g8 r | r8. f'16 d8 r16 bes f8 r r4 |
 }
 
@@ -75,7 +74,7 @@ chorusTp = \relative c'' {
 }
 
 verseAlto = \relative c' {
-    r4^"2nd time only" r8. c16 es8 r16 g c8 r | r2 r4 r8. bes16 | as8 r16 es c8 r r2 | r2 r4 r8. c16 |
+    r4 r8. c16 es8 r16 g c8 r | r2 r4 r8. bes16 | as8 r16 es c8 r r2 | r2 r4 r8. c16 |
     f8 r16 a c8 r r2 | r1 | r4 r8. es16 c8 r16 g es8 r | r8. d'16 bes8 r16 f d8 r r4 |
 }
 
@@ -88,9 +87,8 @@ trumpet = \transpose bes f \relative c'' {
   \set Staff.instrumentName = #"Trumpet"
 
   R1*4
-  R1*8
 
-  \repeat volta 2 \verseTp
+  \repeat volta 2 { s1*0^"2nd time only" \verseTp }
   \repeat volta 2 R1*8
   R1*8
   R1*4
@@ -111,9 +109,8 @@ altoSax = \transpose es f \relative c' {
   \set Staff.instrumentName = #"Alto Sax"
 
   R1*4
-  R1*8
 
-  \repeat volta 2 \verseAlto
+  \repeat volta 2 { s1*0^"2nd time only" \verseAlto }
   \repeat volta 2 R1*8
   R1*8
   R1*4
@@ -152,7 +149,7 @@ altoSax = \transpose es f \relative c' {
 \book {
   \bookOutputSuffix "tp"
   \paper {
-    system-system-spacing #'basic-distance = #15 % increase space
+    system-system-spacing #'basic-distance = #14 % increase space
     % fit on one page
     % system-system-spacing = #'(
     %   (basic-distance . 10)
@@ -175,7 +172,7 @@ altoSax = \transpose es f \relative c' {
 \book {
   \bookOutputSuffix "as"
   \paper {
-    system-system-spacing #'basic-distance = #15 % increase space
+    system-system-spacing #'basic-distance = #14 % increase space
   }
   \score {
     <<
@@ -195,7 +192,7 @@ tenorChords = \transpose bes es \altoChords
 \book {
   \bookOutputSuffix "ts"
   \paper {
-    system-system-spacing #'basic-distance = #15
+    system-system-spacing #'basic-distance = #14
   }
   \score {
     <<

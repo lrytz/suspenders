@@ -25,20 +25,20 @@ structure = {
   s1*4^\markupBox "3x"
   s1*4^\markupBox "4x"
 
-  s1*8 % chorus
+  s1*8 \bar "||" % chorus
 
-  s1*4^\markupBox "2x"
+  s1*4
   s1*4^\markupBox "2x"
 
   s1*8 \bar "||" % chorus
-  s1*8 % solo tp
+  s1*8^\markupBox "Solo Tp" \bar "||"
 
-  s1*4^\markupBox "2x"
+  s1*4
   s1*4^\markupBox "4x"
 
   s1*8^\markupBox "2x" % chorus
 
-  s1*8 % solo git
+  s1*8^\markupBox "Solo Git" \bar "||"
 
   s1*8 \bar "|."
 }
@@ -97,7 +97,7 @@ trumpet = \transpose bes a \relative c' {
 
   \repeat volta 2 \chorusTp
 
-  \repeat volta 2 { s1*0^"Solo Git, background on cue" \chorusTp }
+  R1*8
 
   \chorusTp
 }
@@ -124,7 +124,7 @@ altoSax = \transpose es a \relative c' {
 
   \repeat volta 2 \chorusAs
 
-  \repeat volta 2 { s1*0^"Solo Git, background on cue" \chorusAs }
+  R1*8 % solo git
 
   \chorusAs
 }
