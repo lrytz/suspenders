@@ -54,28 +54,34 @@ trumpetChords = {} % \transpose bes a { s1*32  \theChords }
 
 
 tpChorus = \relative c'' {
-  b8. a16~ a g fis8 r2 | fis8. e16~ e d b8 r2 | g'8. b16~ b d e8 r2 | e8-- d-. r16 d b8-. d-. r r4
+% b8. a16~ a g fis8 r2           | fis8. e16~ e d b8 r2     | g'8. b16~ b d e8 r2         | e8-- d-. r16 d b8-. d-. r r4
+  b8. a16~ a g fis8 fis( g a a~) | a2. r4                   | g8. b16~ b d e8 r fis, a g~ | g~ fis~ fis4~ fis r
 }
 
 tpVerseA = \relative c'' {
-  d8 e fis b, r4 r8. b16 | d8 e fis b, r2 | a16 b8 e16~ e d b8 e e b r | a16 b8 e16~ e d b8 e16 e e8 b r
+% d8-- e-- fis-- b, r4 r8. b16 | d8-- e-- fis-- b, r2 | a16 b8 e16~ e d b8 e e b r | a16 b8 e16~ e d b8 e16 e e8 b r
+  R1*2                                                | a16 b8 e16~ e d b8 e e b r | a16 b8 e16~ e d b8 e16 e e8 b r
 }
 
 tpVerseB = \relative c'' {
-  d8 e fis b, r4 r8. b16 | d8 e fis b, r2 R1*2
+% d8 e fis b, r4 r8. b16 | d8 e fis b, r2 R1*2
+  R1*4
 }
 
 
 asChorus = \relative c' {
-  fis8. d16~ d e d8 r2 | b8. a16~ a g fis8 r2 | d'8. e16~ e g b8 r2 | b8-- a-. r16 a fis8-. a-. r r4
+% fis8. d16~ d e d8 r2         | b8. a16~ a g fis8 r2 | d'8. e16~ e g b8 r2       | b8-- a-. r16 a fis8-. a-. r r4
+  fis8. d16~ d e d8 a( b d d~) | d2. r4               | d8. e16~ e g b8 r a, d b~ | b a~ a4~ a r
 }
 
 asVerseA = \relative c' {
-  fis8 a b fis r4 r8. d16 | fis8 a b fis r2 | d16 e8 a16~ a g e8 a g e r | d16 e8 a16~ a g e8 a16 a g8 e r
+% fis8-- a-- b-- fis r4 r8. d16 | fis8-- a-- b-- fis r2 | d16 e8 a16~ a g e8 a g e r | d16 e8 a16~ a g e8 a16 a g8 e r
+  R1*2                                                  | d16 e8 a16~ a g e8 a g e r | d16 e8 a16~ a g e8 a16 a g8 e r
 }
 
 asVerseB = \relative c' {
-  fis8 a b fis r4 r8. d16 | fis8 a b fis r2 R1*2
+% fis8 a b fis r4 r8. d16 | fis8 a b fis r2 R1*2
+  R1*4
 }
 
 
